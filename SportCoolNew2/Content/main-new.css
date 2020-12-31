@@ -1,0 +1,303 @@
+﻿
+.container {
+    min-width: 800px;
+}
+
+/*//////更換語言 訂閱電子報*/
+.box {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.box1 select {
+    width: 150px;
+    height: auto;
+    border: 2px solid #1153a4;
+    background-color: white;
+    font-size: 14px;
+}
+
+.box .box2 .suscribebar {
+    width: 200px;
+    height: auto;
+    font-size: 14px;
+    margin: 0;
+    border: 2px solid #1153a4;
+}
+
+.box .box2 .suscribebtn {
+    background: #1153a4;
+    border-radius: 0px 5px 5px 0px;
+    font-size: 14px;
+    color: white;
+    margin: 0;
+    cursor: pointer;
+}
+
+
+/*//形象影片*/
+.videobox {
+    margin-top: 10px;
+}
+
+
+
+
+/*//旋轉*/
+.sliderbox {
+    overflow: auto;
+    position: relative;
+    float: left;
+}
+
+.sliderinner {
+    width: 100%;
+    height: auto;
+    padding: 3px;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    animation: 20s slider infinite;
+    animation: 20s slider infinite;
+    cursor: pointer;
+}
+
+    .sliderinner .img {
+        display: none;
+        width: 100%;
+        height: auto;
+    }
+
+        .sliderinner .img .active {
+            display: inline-block;
+        }
+
+.prev,
+.next {
+    float: left;
+    margin-top: 130px;
+    cursor: pointer;
+}
+
+.prev {
+    position: relative;
+    margin-right: -45px;
+    z-index: 100;
+}
+
+.next {
+    position: relative;
+    margin-left: -45px;
+    z-index:100;
+}
+
+.dot {
+    width: 15px;
+    cursor: pointer;
+}
+
+.drop {
+    width: 35px;
+    cursor: pointer;
+}
+
+/*//////熱門商品*/
+.col-md-3 {
+    display: inline-block;
+    margin-left: -4px;
+}
+
+    .col-md-3 img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+        .col-md-3 img:hover {
+            opacity: 0.8;
+        }
+
+body .carousel-indicators li {
+    background-color: black;
+}
+
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon {
+    background-color: black;
+}
+
+body .no-padding {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media (max-width:600px) {
+    .container {
+        width: 100px;
+        height: 441px;
+    }
+
+    .hotproductbox .carousel-item {
+        height: 441px;
+    }
+
+    .col-sm-3 img {
+        width: 50%;
+        height: auto;
+        margin-left: 47px;
+        cursor: pointer;
+    }
+
+        .col-sm-3 img:hover {
+            opacity: 0.8;
+        }
+}
+
+
+/*//////all img*/
+.img {
+    height: 280px;
+    width: auto;
+}
+
+    .img:hover {
+        opacity: 0.8;
+        transition: 0.8s ease;
+    }
+
+.imgbig {
+    height: 265px;
+    margin: 10px;
+}
+
+    .imgbig:hover {
+        opacity: 0.8;
+        transition: 0.8s ;
+    }
+@media screen and (max-width: 1020px) {
+    .imgbig {
+        width: 325px;
+        height: 275px;
+    }
+}
+
+/*//////熱門分類*/
+.categorybox {
+    /*//background-color:#e6da57;*/
+    text-align: center;
+    margin-top: 60px;
+}
+
+.categoryimg {
+    /*//background-color:#54c04f;*/
+    display: flex;
+    flex-wrap: wrap;
+    /*//並排 align-items: center;*/
+    justify-content: center;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1355px) {
+    .categorybox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 800px;
+    }
+
+    .categoryimg {
+        width: 1050px;
+    }
+}
+
+/*//////官方貼文*/
+.articlebox {
+    /*//background-color:#e6da57;*/
+    text-align: center;
+    margin-top: 60px;
+}
+
+.articleimg {
+    /*//background-color:#54c04f;*/
+    display: flex;
+    flex-wrap: wrap;
+    /*//並排 align-items: center;*/
+    justify-content: center;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1355px) {
+    .articlebox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .articleimg {
+        width: 1050px;
+    }
+}
+
+
+/*//////運酷學習*/
+.learningbox {
+    /*//background-color:#e6da57;*/
+    text-align: center;
+    margin-top: 60px;
+}
+
+.learningimg {
+    /*//background-color:#54c04f;*/
+    display: flex;
+    flex-wrap: wrap;
+    /*//並排 align-items: center;*/
+    justify-content: center;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1355px) {
+    .learningbox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .learningimg {
+        width: 1050px;
+    }
+}
+
+
+/*//////個人專區*/
+.personalbox {
+    /*//background-color:#e6da57;*/
+    text-align: center;
+    margin-top: 60px;
+}
+
+.personalimg {
+    /*//background-color:#54c04f;*/
+    display: flex;
+    flex-wrap: wrap;
+    /*//並排 align-items: center;*/
+    justify-content: center;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1355px) {
+    .personalbox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .personalimg {
+        width: 1050px;
+    }
+}
+
+ 

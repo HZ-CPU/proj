@@ -1,0 +1,302 @@
+﻿
+body{
+    font-family: 'Montserrat';
+    font-size: 18px;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;
+}
+
+/*//////頁首畫面*/
+    .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30%;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(180deg,#2a7adb 0%,#4BB4EB 100%);
+    opacity: 0.9;
+}
+
+.headerbox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+/*//運酷logo
+        */ 
+.yunkulogobox {
+    width: 180px;
+    display: flex;
+    align-items: center;
+}
+
+.yunkulogo {
+    /*//grid-area: logoarea;*/
+    width: 180px;
+    height: auto;
+    cursor: pointer;
+}
+
+/*//搜尋*/
+.searchbox {
+    /* //grid-area: searcharea;*/
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+}
+
+.searchbar {
+    width: 80%;
+    height: 40px;
+    margin: 0;
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+.searchicon {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    background-color: #1153a4;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+}
+
+/*//購物 會員 漢堡icon*/
+.iconbox {
+    /* //grid-area: iconarea;*/
+    width: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.icon {
+    height: 30px;
+    margin: 3px;
+    cursor: pointer;
+    position: relative;
+    flex-direction: row;
+}
+
+/*//////登入彈出視窗*/
+.modalbox .modal-content {
+    position: relative;
+    top: 200px;
+    left: 100px;
+    text-align: center;
+    background: linear-gradient(180deg,#2a7adb 0%,#4BB4EB 100%);
+    opacity: 0.9;
+    width: 350px;
+    height: 450px;
+    padding: 20px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    border-radius: 10px;
+}
+
+.modal-title {
+    color: white;
+}
+
+.modalbox .modal-body label {
+    font-size: 15px;
+    margin-bottom: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+    .modalbox .modal-body label:hover {
+        color: #1153a4;
+        border-bottom: 1px solid #1153a4;
+    }
+
+/*@@media(max-width:600){
+                        .modalbox{
+                            position: relative;
+                            top: 10px;
+                            left: 10px;
+
+                        }
+
+                    }*/
+
+/*//運酷一下*/
+.modalbox .modal-footer button {
+    position: absolute;
+    bottom: 50px;
+    right: 120px;
+    width: 100px;
+    border: 2px solid #1153a4;
+    background: #4BB4EB;
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+    .modalbox .modal-footer button:hover {
+        background: #1153a4;
+    }
+
+/*//帳號密碼輸入框*/
+.textbox input {
+    width: 100%;
+    height: 30px;
+    padding: 10px;
+    font-size: 18px;
+    margin: 10px 0 10px 0;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    background: #053979;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    transition: 0.5s ease;
+}
+
+/*//////導航列*/
+.navbox {
+    width: auto;
+    height: 55px;
+    /* //margin-top:1px;*/
+    background: linear-gradient(0deg,#089beb 0%,#4BB4EB 100%);
+    opacity: 0.9;
+}
+
+    .navbox .nav-link {
+        font-size: 20px;
+        color: white;
+        cursor: pointer;
+    }
+
+        .navbox .nav-link:hover {
+            color: #1153a4;
+            /*//text-decoration:underline,solid,5px；*/
+        }
+
+@media(max-width:560px) {
+    .navbox .nav-link {
+        font-size: 16px;
+    }
+}
+
+/*//頁尾*/
+footer {
+    margin-top: 60px;
+    width: 100%;
+    height: 350px;
+    padding: 40px;
+    background: #DCEAF2;
+}
+
+.footerallbox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer h3 {
+    font-size: 22px;
+}
+
+footer h4 {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    footer h4:hover {
+        color: #1153a4;
+    }
+
+.footerleft {
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    /*//background-color: rgb(26, 49, 121);*/
+}
+
+footer .footerbox1 {
+    margin: 10px;
+    width: 150px;
+    height: auto;
+    text-align: left;
+    /*//background-color: rgb(204, 49, 49);*/
+}
+
+footer .footerbox2 {
+    margin: 10px;
+    width: 160px;
+    text-align: left;
+    /*//background-color: rgb(26, 49, 121);*/
+}
+
+.QR {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 8px;
+}
+
+footer .footerbox3 {
+    margin: 10px;
+    width: 200px;
+    text-align: left;
+    /*//background-color: rgb(66, 147, 26);*/
+}
+
+.footerright {
+    width: 25%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    /*//background-color: rgb(179, 83, 150);*/
+}
+
+footer .footerbox4 {
+    text-align: right;
+    /*//background-color: rgb(190, 115, 80);*/
+}
+
+@media screen and (max-width: 600px) {
+    footer .footerbox4 {
+        width: 95px;
+        /*//background-color: rgb(187, 165, 44);*/
+    }
+}
+
+@media screen and (max-width: 600px) {
+    footer {
+        height: 45vh;
+        /*//background-color: rgb(187, 165, 44);*/
+    }
+}
+
+.facebook {
+    width: 20px;
+    height: 30px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.line,
+.instagram,
+.youtube {
+    width: 30px;
+    height: 30px;
+    margin: 3px;
+    cursor: pointer;
+}
+

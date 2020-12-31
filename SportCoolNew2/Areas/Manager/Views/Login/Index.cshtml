@@ -1,0 +1,77 @@
+﻿
+<link href="~/Content/backindex.css" rel="stylesheet" />
+<title>運酷後台系統！</title>
+
+<style>
+    h1 {
+        font: black;
+        width: 100px;
+    }
+
+    a, a:link, a:visited {
+        color: #000000;
+        text-decoration: none
+    }
+
+    .categorybox {
+        width: 100%;
+        height: 900px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: hotpink;*/
+    }
+
+    .categorytitle {
+        width: 80px;
+        height: 800px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /*background-color: purple;*/
+    }
+
+    @@media (min-width:790px) {
+        .categorytitle {
+            width: 900px;
+            height: 450px;
+        }
+
+        .categorybox {
+            width: 100%;
+            height: 500px;
+        }
+    }
+
+    .categorytitle .hbox {
+        height: 150px;
+        width: 150px;
+        padding: 5px;
+        margin: 10px;
+        border: 2px solid #5CD8E8;
+        border-radius: 10px;
+        /* background-color: grey;*/
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .categorytitle .hbox:hover {
+            background-color: #5CD8E8;
+        }
+</style>
+
+<div class="categorybox">
+    <div class="categorytitle">
+        <a href="/Manager/Members/Index?"> <div class="hbox"><h1>會員清單</h1></div></a>
+        <a href="/Manager/TrendingArticles/Index?"> <div class="hbox"><h1>官方貼文</h1></div></a>
+        <a href="/Manager/Classes/Index?"> <div class="hbox"><h1>運酷學習</h1></div></a>
+        <a href="/Manager/Commodities/Index?"> <div class="hbox"><h1>運酷商城</h1></div></a>
+    </div>
+</div>
+
+
+

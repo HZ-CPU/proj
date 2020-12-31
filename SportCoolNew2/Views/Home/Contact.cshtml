@@ -1,0 +1,418 @@
+﻿
+<style>
+
+    table {
+        width: auto;
+    }
+
+    table, th, td {
+        border: solid 1px #DDD;
+        border-collapse: collapse;
+        padding: 2px 2px;
+        text-align: center;
+    }
+
+    input {
+        border: none;
+    }
+</style>
+<div class="row" style="margin-left:70px;">
+    <div class="col-6 col-xs-12">
+        <h2 style="text-align: left; margin-top:20px;">身體數值計算</h2>
+        <form class="add-item needs-validation" novalidate>
+
+            @*<h5>身高:<input id="height" type="text" style="margin:10px;" required /><span>cm</span></h5>*@
+            @*<h5>體重:<input id="weight" type="text" style="margin:10px;" required /><span>kg</span></h5>*@
+            @*<h5>年齡:<input id="age" type="text" style="margin:10px;" required /><span>歲</span></h5>*@
+
+            <h5>
+                身高:
+                @*<label for="validationDefault01">身高</label>*@
+                <input type="text" class="form-control" id="height" value="" required />
+            </h5>
+
+            <h5>
+                體重:
+                @*<label for="validationDefault02">體重</label>*@
+                <input type="text" class="form-control" id="weight" value="" required />
+            </h5>
+
+            <h5>
+                年齡:
+                @*<label for="validationDefault03">年齡</label>*@
+                <input type="text" class="form-control" id="age" value="" required />
+            </h5>
+
+
+            <h5>
+                性別:
+                <select id="gender" style="margin:15px;">
+                    <option>男性</option>
+                    <option>女性</option>
+                </select>
+            </h5>
+
+            <h5 style="margin-top:10px">
+                日常運動量:
+                <select id="activitylevel" style="margin:10px 10px 10px 10px;">
+                    <option>久坐 (每周活動0~1次)</option>
+                    <option>輕度活動量 (每周活動1-3次)</option>
+                    <option>中度活動量 (每周活動3-5次)</option>
+                    <option>高度活動量 (每周活動5-7次)</option>
+                    <option>極高度活動量 (健身教練/運動員)</option>
+                </select>
+            </h5>
+
+
+            <h5>
+                目標飲食方式:
+                <select id="aimslevel" style="margin:10px 10px 10px 10px;" ;>
+                    <option>一般健身族群</option>
+                    <option>高碳水</option>
+                    <option>超高蛋白質</option>
+                    <option>生酮飲食</option>
+                    <option>增加肌肉</option>
+                    <option>減少脂肪</option>
+                </select>
+            </h5>
+
+            <h5 style="margin-top:15px">
+                你每天吃幾餐？
+                <input type="text" class="form-control" id="eatMeal" value="" placeholder="例：一天吃六餐就輸入6" style="margin-top:5px;" required />
+            </h5>
+
+            <p style=" text-align:left; margin-top:30px;">
+                <button id="Submit1" type="button" class="btn btn-primary" onclick="count()" style="margin:10px;">開始計算</button>
+                @*<input id="Submit1" type="button" class="btn btn-primary" value="開始計算" onclick="count()" style="margin:10px;" />*@
+                <input id="Reset1" type="reset" class="btn btn-danger" onclick=" " value="重新輸入" style="margin:10px;" />
+            </p>
+        </form>
+    </div>
+
+    <div class="col-6 col-xs-12">
+        <h2 style="text-align: left; margin-top:10px;">您的身體數值</h2>
+        <fieldset>
+            <h5 style="margin:15px;">BMR (基礎代謝率): <span style="color:blue;" id="BMR"></span></h5>
+            <h5 style="margin:15px;">TDEE (每日消耗總熱量): <span style="color:blue;" id="TDEE"></span></h5>
+            <h5 style="margin:15px;">BMI (身高體重指數): <span style="color:blue;" id="BMI"></span></h5>
+        </fieldset>
+
+        <h2 style="text-align: left; margin-top:40px;">建議攝取量</h2>
+        <fieldset>
+            <h5 style="margin:15px;">每日需攝取幾克碳水化合物: <span style="color:blue;" id="carbohydrate_day"></span></h5>
+            <h5 style="margin:15px;">每日需攝取幾克蛋白質: <span style="color:blue;" id="protein_day"></span></h5>
+            <h5 style="margin:15px;">每日需攝取幾克脂肪: <span style="color:blue;" id="fat_day"></span></h5>
+        </fieldset>
+
+        <h2 style="text-align: left; margin-top:40px;">每餐的份量計算</h2>
+        <fieldset>
+            <h5 style="margin:15px;">每餐需吃幾克碳水化合物: <span style="color:blue;" id="carbohydrate"></span></h5>
+            <h5 style="margin:15px;">每餐需吃幾克碳水化合物: <span style="color:blue;" id="protein"></span></h5>
+            <h5 style="margin:15px;">每餐需吃幾克碳水化合物: <span style="color:blue;" id="fat"></span></h5>
+        </fieldset>
+    </div>
+
+</div>
+
+<hr>
+
+<body onload="createTable()">
+    <h2 style="text-align: center; margin-top:40px;">實際攝取食物計算器</h2>
+    <div class="row" style="margin:20px 0px">
+
+        <h5>
+            <select id="food" style="margin:10px 10px 10px 10px;">
+                <option value="1">拉麵</option>
+                <option value="2">鍋燒麵</option>
+                <option value="3">通心麵</option>
+                <option value="4">蚵仔麵線</option>
+                <option value="5">蚵仔煎</option>
+                <option value="6">滷牛筋</option>
+                <option value="7">豬大骨湯</option>
+                <option value="8">鮪魚生魚片</option>
+                <option value="9">滷蛋</option>
+                <option value="10">美式咖啡(無糖)</option>
+            </select>
+        </h5>
+
+        <select id="amount" style="margin:1px 10px 10px 10px; font-size:20px">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>
+        <input class="btn btn-primary" id="addRow" type="submit" value="新增" onclick="addRow()" style="margin:0px 10px" />
+    </div>
+
+    <div id="cont"></div>
+</body>
+
+<script>
+    //carbohydrate碳水化合物、protein蛋白、fat脂肪、calories卡路里
+    var dateTime, food, amount, r_carbohydrate, r_protein, r_fat, r_calories;
+    var arrHead = new Array();
+    var r_carbohydrate = new Array();
+
+    arrHead = ['', '時間', '項目', '數量', '碳水化合物', '蛋白質', '脂肪', '卡路里'];
+    arrID = ['', 'date', 'record_food', 'record_amount', 'record_carbohydrate', 'record_protein', 'record_fat', 'record_calories'];
+
+    var n = new Date();
+    var y = n.getFullYear();
+    var m = n.getMonth() + 1;
+    d = n.getDate();
+    hr = n.getHours();
+    min = n.getMinutes();
+    sec = n.getSeconds();
+    dateTime = y + "/" + m + "/" + d + " " + hr + ":" + min + ":" + sec;
+
+    function createTable() {
+        var empTable = document.createElement('table');
+        empTable.setAttribute('id', 'empTable');
+        empTable.setAttribute('style', 'margin:10px;width: 100%');
+
+        var tr = empTable.insertRow(-1);
+        for (var h = 0; h < arrHead.length; h++) {
+            var th = document.createElement('th');
+            th.setAttribute('style', 'font-size:1.2rem');
+            th.innerHTML = arrHead[h];
+            tr.appendChild(th);
+        }
+        var div = document.getElementById('cont');
+        div.appendChild(empTable);
+    }
+
+
+    function addRow() {
+        var empTab = document.getElementById('empTable');
+
+        var rowCnt = empTab.rows.length;
+        var tr = empTab.insertRow(rowCnt);
+
+        //if (empTab.rows.length != 0) {
+        //    empTab.setAttribute('style', 'margin-left:-100px');
+        //}
+        tr = empTab.insertRow(rowCnt);
+
+        for (var c = 0; c < arrHead.length; c++) {
+            var td = document.createElement('td');
+
+            td = tr.insertCell(c);
+
+            if (c == 0) {
+                var button = document.createElement('input');
+
+                button.setAttribute('type', 'button');
+                button.setAttribute('value', '刪除');
+                button.setAttribute('class', 'btn btn-danger');
+                button.setAttribute('onclick', 'removeRow(this)');
+
+                td.appendChild(button);
+            }
+            else {
+                food = $('#food').find('option:selected').text();
+                foodValue = parseInt($('#food').find('option:selected').val());
+                amount = parseInt(document.getElementById("amount").value);
+
+                r_carbohydrate = [0, 62.1, 24.6, 72.6, 62.3, 19.7, 2.6, 0.4, 0, 4.4, 0.3];
+                r_protein = [0, 9.1, 10.0, 13.8, 11.3, 4.9, 21.1, 1, 23.3, 16.9, 0.2];
+                r_fat = [0, 0.8, 22.8, 1.4, 1.4, 10.4, 2.8, 0.3, 0.1, 10.8, 0.1];
+                r_calories = [0, 290, 473, 355, 303, 191, 119, 7, 100, 182, 2];
+
+                var ele = document.createElement('input');
+                ele.setAttribute('id', arrID[c]);
+                ele.setAttribute('type', 'text');
+                ele.setAttribute('style', 'text-align: center;');
+
+                switch (arrID[c]) {
+                    case "date":
+                        console.log(arrID[c]);
+                        ele.setAttribute('value', dateTime);
+                        break;
+                    case "record_food":
+                        ele.setAttribute('value', food);
+                        break;
+                    case "record_amount":
+                        ele.setAttribute('value', amount);
+                        break;
+                    case "record_carbohydrate":
+                        var aa = r_carbohydrate[foodValue] * amount;
+                        aa = Math.round(aa * 10) / 10;
+                        ele.setAttribute('value', aa);
+                        break;
+                    case "record_protein":
+                        var bb = r_protein[foodValue] * amount;
+                        bb = Math.round(bb * 10) / 10;
+                        ele.setAttribute('value', bb);
+                        break;
+                    case "record_fat":
+                        var cc = r_fat[foodValue] * amount;
+                        cc = Math.round(cc * 10) / 10;
+                        ele.setAttribute('value', cc);
+                        break;
+                    case "record_calories":
+                        var dd = r_calories[foodValue] * amount;
+                        dd = Math.round(dd * 10) / 10;
+                        ele.setAttribute('value', r_calories[foodValue] * amount);
+                        break;
+                }
+
+                td.appendChild(ele);
+            }
+        }
+    }
+
+    function removeRow(oButton) {
+        var yes = confirm('確定要刪除嗎？');
+        if (yes) {
+            var empTab = document.getElementById('empTable');
+            empTab.setAttribute('style', 'margin:10px;width:100%;');
+            empTab.deleteRow(oButton.parentNode.parentNode.rowIndex);
+        } else {
+        }
+    }
+
+    function submit() {
+        var myTab = document.getElementById('empTable');
+        var arrValues = new Array();
+
+        for (row = 1; row < myTab.rows.length - 1; row++) {
+            for (c = 0; c < myTab.rows[row].cells.length; c++) {
+                var element = myTab.rows.item(row).cells[c];
+                if (element.childNodes[0].getAttribute('type') == 'text') {
+                    arrValues.push("'" + element.childNodes[0].value + "'");
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    var carbohydrate, protein, fat;
+    function count() {
+        var gender = document.getElementById("gender").value;
+        var weight = document.getElementById("weight").value;
+        var height = document.getElementById("height").value;
+        var age = document.getElementById("age").value;
+        var activitylevel = document.getElementById("activitylevel").value;
+        var aimslevel = document.getElementById("aimslevel").value;
+        var eatMeal = document.getElementById("eatMeal").value;
+
+        if ((weight != "") && (height != "") & (age != "") && (eatMeal != "")) {
+            //BMR
+            var bmr;
+            if (gender == "男性") {
+                bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+            }
+            else {
+                bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+            }
+
+            //TDEE
+            var tdee;
+            if (activitylevel == "久坐久坐 (一般上班族)") {
+                tdee = 1.2 * bmr;
+            }
+            else if (activitylevel == "輕度活動量 (每周活動1-3次)") {
+                tdee = 1.375 * bmr;
+            }
+            else if (activitylevel == "中度活動量 (每周活動3-5次)") {
+                tdee = 1.55 * bmr;
+            }
+            else if (activitylevel == "高度活動量 (每周活動5-7次)") {
+                tdee = 1.725 * bmr;
+            }
+            else {
+                tdee = 1.9 * bmr;
+            }
+
+            // BMI = 體重(公斤) / 身高2(公尺2)
+            var bmi;
+            bmi = Math.round((weight / ((height / 100) * (height / 100))) * 10) / 10;
+
+            // 身體數值輸出
+            $("#BMR")[0].innerText = bmr;
+            $("#TDEE")[0].innerText = tdee;
+            $("#BMI")[0].innerText = bmi;
+
+            if (aimslevel == "一般健身族群") {
+                carbohydrate = (tdee * 0.5) / 4;
+                protein = (tdee * 0.3) / 4;
+                fat = (tdee * 0.2) / 9;
+            }
+            else if (aimslevel == "高碳水") {
+                carbohydrate = (tdee * 0.6) / 4;
+                protein = (tdee * 0.25) / 4;
+                fat = (tdee * 0.15) / 9;
+            }
+            else if (aimslevel == "超高蛋白質") {
+                carbohydrate = (tdee * 0.25) / 4;
+                protein = (tdee * 0.45) / 4;
+                fat = (tdee * 0.3) / 9;
+            }
+            else if (aimslevel == "生酮飲食") {
+                carbohydrate = (tdee * 0.1) / 4;
+                protein = (tdee * 0.2) / 4;
+                fat = (tdee * 0.7) / 9;
+            }
+            else if (aimslevel == "增加肌肉") {
+                ;
+                tdee = tdee + 300;
+                carbohydrate = (tdee * 0.55) / 4;
+                protein = (tdee * 0.25) / 4;
+                fat = (tdee * 0.2) / 9;
+            }
+            else if (aimslevel == "減少脂肪") {
+                tdee = tdee - 300;
+                carbohydrate = (tdee * 0.5) / 4;
+                protein = (tdee * 0.3) / 4;
+                fat = (tdee * 0.2) / 9;
+            }
+
+            $("#carbohydrate_day")[0].innerText = Math.round(carbohydrate * 100) / 100 + " 克碳水化合物";
+            $("#protein_day")[0].innerText = Math.round(protein * 100) / 100 + " 克蛋白質";
+            $("#fat_day")[0].innerText = Math.round(fat * 100) / 100 + " 克脂肪";
+
+            $("#carbohydrate")[0].innerText = Math.round(carbohydrate * 100 / eatMeal) / 100 + " 克碳水化合物";
+            $("#protein")[0].innerText = Math.round(protein * 100 / eatMeal) / 100 + " 克蛋白質";
+            $("#fat")[0].innerText = Math.round(fat * 100 / eatMeal) / 100 + " 克脂肪";
+        } else {
+            alterFunction();
+        }
+    }
+
+    // 必填項目
+    //Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('button', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+    function alterFunction() {
+        alert("請輸入數值");
+    }
+
+    function reset() {
+        $("#BMR")[0].innerText = null;
+        $("#TDEE")[0].innerText = null;
+        $("#BMI")[0].innerText = null;
+    }
+</script>

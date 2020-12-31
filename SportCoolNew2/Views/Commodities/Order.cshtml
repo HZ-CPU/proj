@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+}
+
+
+    <form action="@Url.Action("Order")" method="post" class="container">
+        <h2>收件人資料</h2>
+        <div class="form-horizontal">
+            <hr />
+            <div class="form-group">
+                <span class="control-label col-md-2">收件人姓名</span>
+                <div class="col-md-10">
+                    <input type="text" id="fName" name="fName" required="required" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <span class="control-label col-md-2">收件人電話</span>
+                <div class="col-md-10">
+                    <input type="text" id="ftelephone" name="ftelephone" required="required" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <span class="control-label col-md-2">收件人地址</span>
+                <div class="col-md-10">
+                    <input type="text" id="fAddress" name="fAddress" required="required" class="form-control" />
+                </div>
+            </div>
+
+            <input id="data" name="data" type="hidden" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="結帳" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        @Html.ActionLink("返回主頁", "Index", "Commodities")
+    </form>
+@section scripts{
+    <script>
+        if (localStorage.getItem("cart")) {
+            $('#data').val(localStorage.getItem("cart"));
+        }
+    </script>
+}
+

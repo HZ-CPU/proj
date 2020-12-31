@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Personal";
+}
+
+
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <nav class="nav">
+        <a class="nav-link active" href="/Members/Details/@Session["memberId"]">會員資料</a>
+        <a class="nav-link" href="/Friends/Index/@Session["memberId"]">好友清單</a>
+        <a class="nav-link" href="/Activities/Index/@Session["memberId"]">活動清單</a>
+        
+    </nav>
+</nav>
+

@@ -1,0 +1,18 @@
+﻿@*@model SportCoolNew2.Models.TrendingArticles*@
+@model IEnumerable<SportCoolNew2.Models.TrendingArticles>
+
+<div class="row ustify-content-start">
+
+    @foreach (var item in Model)
+    {
+        <div class="card col-md-4 mt-1 border-0 text-center" style="width:180px;height:250px;">
+            <a href="/TrendingArticles/Details/@item.articlesId"> <img src="~/Images/@item.image" class="img-fluid rounded mx-auto d-block" style="width:300px;height:200px;" /></a>
+            @*<div class="card-body pb-5">*@
+            <div class="mt-1"></div>
+        <h4 style="overflow: hidden; white-space:nowrap; text-overflow:ellipsis;color:#5b5a5a">@Html.DisplayFor(modelItem => item.article)</h4>
+            @*</div>*@
+        </div>
+
+    }
+
+</div>

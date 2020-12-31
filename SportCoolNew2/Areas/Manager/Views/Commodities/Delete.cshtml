@@ -1,0 +1,71 @@
+﻿@model SportCoolNew2.Models.Commodity
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<h3 class="mt-5">即將下架的商品</h3>
+
+<table class="container table table-striped">
+    <thead class="text-center" style="background-color:dodgerblue; color:white;">
+        <tr>
+            <th style="width:100px;"> @Html.DisplayNameFor(model => model.commodityName)</th>
+            <th style="width:100px;"> @Html.DisplayNameFor(model => model.commodityPrice)</th>
+            <th style="width:100px;"> @Html.DisplayNameFor(model => model.commodityImage)</th>
+            <th style="width:100px;"> @Html.DisplayNameFor(model => model.commodityDescription)</th>
+            <th style="width:100px;"> @Html.DisplayNameFor(model => model.commodityStock)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="text-center">
+            <td>@Html.DisplayFor(model => model.commodityName)</td>
+            <td> @Html.DisplayFor(model => model.commodityPrice)</td>
+            <td >
+                <img class="img-fluid" style="width:50px;height:50px;" src="~/Images/@Html.DisplayFor(modelItem => Model.commodityImage)">
+            </td>
+            <td> @Html.DisplayFor(model => model.commodityDescription)</td>
+            <td> @Html.DisplayFor(model => model.commodityStock)</td>
+        </tr>
+    </tbody>
+</table>
+
+
+@*<table class="table container">
+    <tbody class="row">
+        <tr class="col-3"> @Html.DisplayNameFor(model => model.commodityName)</tr>
+        <tr class="col-3"> @Html.DisplayNameFor(model => model.commodityPrice)</tr>
+        <tr class="col-3">  @Html.DisplayNameFor(model => model.commodityImage)</tr>
+        <tr class="col-3"> @Html.DisplayNameFor(model => model.commodityDescription)</tr>
+        <tr> @Html.DisplayNameFor(model => model.commodityStock)</tr>
+    </tbody>
+    <tr>
+        <th>
+            @Html.DisplayFor(model => model.commodityName)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.commodityPrice)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.commodityImage)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.commodityDescription)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.commodityStock)
+        </th>
+    </tr>
+</table>*@
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="確定刪除" class="btn btn-danger" /> |
+        @Html.ActionLink("返回", "Index")
+    </div>
+}
+      

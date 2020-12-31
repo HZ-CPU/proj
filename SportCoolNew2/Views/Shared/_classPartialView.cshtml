@@ -1,0 +1,150 @@
+﻿@*@model SportCoolNew2.Models.Class*@
+@model IEnumerable<SportCoolNew2.Models.Class>
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">初階</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">進階</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">高階</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="tab-pane show active fade w-100" id="home">
+            <div class="row row-cols-1 row-cols-md-3 justify-content-start">
+                @foreach (var item in Model)
+                {
+                    if(item.cGradeId==1)
+                    { 
+                    <div class="col mb-4 ">
+                        <div class="card h-100 mt-3 border-0 bg-transparent">
+                            @if (item.audio == null)
+                            {
+                                <h4>暫無圖示</h4>
+                            }
+                            else
+                            {
+                                <a href="/Classes/Details/@item.cId">
+                                    <video style="width:100%" controls>
+                                        <source src="@Url.Content(item.audio)" type="video/mp4" />
+                                    </video>
+
+                                </a>
+
+                            }
+                            <div class="ustify-content-start" style="background-color:none;">
+                                <h3>@item.className</h3>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="tab-pane show active fade w-100" id="home2">
+            <div class="row row-cols-1 row-cols-md-3 justify-content-start">
+                @foreach (var item in Model)
+                {
+                    if (item.cGradeId == 2)
+                    {
+                        <div class="col mb-4 ">
+                            <div class="card h-100 mt-3 border-0 bg-transparent">
+                                @if (item.audio == null)
+                                {
+                                    <h4>暫無圖示</h4>
+                                }
+                                else
+                                {
+                                    <a href="/Classes/Details/@item.cId">
+                                        <video style="width:100%" controls>
+                                            <source src="@Url.Content(item.audio)" type="video/mp4" />
+                                        </video>
+
+                                    </a>
+
+                                }
+                                <div class="ustify-content-start" style="background-color:none;">
+                                    <h3>@item.className</h3>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <div class="tab-pane show active fade w-100" id="home3">
+            <div class="row row-cols-1 row-cols-md-3 justify-content-start">
+                @foreach (var item in Model)
+                {
+                    if (item.cGradeId == 3)
+                    {
+                        <div class="col mb-4 ">
+                            <div class="card h-100 mt-3 border-0 bg-transparent">
+                                @if (item.audio == null)
+                                {
+                                    <h4>暫無圖示</h4>
+                                }
+                                else
+                                {
+                                    <a href="/Classes/Details/@item.cId">
+                                        <video style="width:100%" controls>
+                                            <source src="@Url.Content(item.audio)" type="video/mp4" />
+                                        </video>
+
+                                    </a>
+
+                                }
+                                <div class="ustify-content-start" style="background-color:none;">
+                                    <h3>@item.className</h3>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@*<div class="tab-pane show active fade w-100" id="home">
+    <div class="row row-cols-1 row-cols-md-3 justify-content-start">
+        @foreach (var item in Model)
+        {
+            <div class="col mb-4 ">
+                <div class="card h-100 mt-3 border-0 bg-transparent">
+                    @if (item.audio == null)
+                    {
+                        <h4>暫無圖示</h4>
+                    }
+                    else
+                    {
+                        <a href="/Classes/Details/@item.cId">
+                            <video style="width:100%" controls>
+                                <source src="@Url.Content(item.audio)" type="video/mp4" />
+                            </video>
+
+                        </a>
+
+                    }
+                    <div class="ustify-content-start" style="background-color:none;">
+                        <h3>@item.className</h3>
+                  
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>*@

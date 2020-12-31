@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SportCoolNew2.Models.Commodity>
+
+@{
+    ViewBag.Title = "商品管理";
+}
+
+<h2 class="text-center mt-5">運酷商城管理</h2>
+
+<p>
+    @Html.ActionLink("上架商品", "Create", new { }, new { @class = "btn btn-outline-primary" })
+</p>
+
+
+<table class="list-group-horizontal-xl table-striped ">
+    <tr class="row">
+        <th class="col-2">
+            @Html.DisplayNameFor(model => model.commodityName)
+        </th>
+        <th class="col-2">
+            @Html.DisplayNameFor(model => model.commodityImage)
+        </th>
+        <th class="col-2">
+            @Html.DisplayNameFor(model => model.commodityPrice)
+        </th>
+        <th class="col-3">
+            @Html.DisplayNameFor(model => model.commodityDescription)
+        </th>
+        <th class="col-1">
+            @Html.DisplayNameFor(model => model.commodityStock)
+        </th>
+        <th class="col-2">
+            <p></p>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr class="row">
+    <td class="overflow col-2">
+        @Html.DisplayFor(modelItem => item.commodityName)
+    </td>
+    <td class="col-2">
+        <img class="w-25" src="~/Images/@Html.DisplayFor(modelItem => item.commodityImage)">
+    </td>
+    <td class="col-2">
+        @Html.DisplayFor(modelItem => item.commodityPrice)
+    </td>
+    <td class="col-3">
+        @Html.DisplayFor(modelItem => item.commodityDescription)
+    </td>
+    <td class="col-1">
+        @Html.DisplayFor(modelItem => item.commodityStock)
+    </td>
+    <td class="col-2">
+        <p class="row ">
+            @if (item.commodityId > 0 && item.commodityId < 6)
+            {
+
+                @Html.ActionLink("編輯", "Edit", new { id = item.commodityId }, new { @class = "btn btn-outline-success" })
+            }
+            else
+            {
+                @Html.ActionLink("下架商品", "Delete", new { id = item.commodityId }, new { @class = "btn btn-outline-danger" })
+            }
+        </p>
+    </td>
+
+
+</tr>
+    }
+</table>
+

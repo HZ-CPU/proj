@@ -1,0 +1,117 @@
+﻿@model IEnumerable<SportCoolNew2.Models.Activity>
+
+@{
+    ViewBag.Title = "活動清單";
+}
+    <div class="container">
+        <h2>尋找活動</h2>
+        <br />
+        <div class="nav nav-tabs ">
+            <p>
+                @*@Html.ActionLink("舉辦活動", "Create", new { @class = "text-white" })*@
+                <a class="btn btn-outline-primary" href="/Activities/Create">舉辦活動</a>
+            </p>
+
+            <p class="ml-1">
+                @*@Html.ActionLink("我的活動", "Index", "HoldLists")*@
+                <a class="btn btn-outline-primary" href="/HoldLists/Index">我的活動</a>
+            </p>
+        </div>
+
+        @if (@TempData["act"] != null)
+                    {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>已經參加此活動!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.holder)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.place)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.dateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.item)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+                {
+
+                    DateTime time1 = Convert.ToDateTime(item.dateTime.ToString("yyyy-MM-dd"));
+                    DateTime time2 = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+
+                    if (DateTime.Compare(time1, time2) > 0)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.holder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.place)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.item)
+                        </td>
+                        <td>
+                        </td>
+
+                        <td>
+
+                            @*@Html.ActionLink("Details", "Details", new { id = item.activityId })*@
+                            @*@Html.ActionLink("加入", "Adalist", new { id = item.activityId })*@
+
+
+
+                            <input id="item.activityId" name="item.activityId" type="submit" value="加入" class="btn btn-outline-success" data-toggle="modal" data-target="#Adalist@(item.activityId)" />
+
+                            @*<input id="item.activityId" name="item.activityId" type="submit" value="加入" class="btn btn-outline-success" data-toggle="modal" data-target="#Adalist@(item.activityId)" />*@
+
+                            <div class="modal fade" id="Adalist@(item.activityId)">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3>你確定要參加活動 "@item.name"?</h3>
+                                            <button class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                       
+                                        <div class="modal-footer">
+                                            <a href="@Url.Action("Adalist", new { id = item.activityId })" class="btn btn-success" )>確定</a>
+                                            <input id="Button1" type="button" value="Close" class="btn btn-light" data-dismiss="modal" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+
+
+
+    </div>
+
+
+
+<br /><br /><br /><br /><br />

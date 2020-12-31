@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background: linear-gradient(180deg, #2a7adb 0%, #4BB4EB 100%);">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="yunkulogobox">
+                    <a href="/Home/Login?area=''"><img src="~/homepage_image/yunku_logo.png" alt="yunkulogo" class="yunkulogo" style="width:50%"></a>
+                </li>
+
+                @*<li class="nav-item active text-white">
+                        <a href="/Home/Index?" class='navbar-brand'>首頁</a>
+                    </li>*@
+                @*<li class="nav-item text-white">@Html.ActionLink("關於", "About", "Home")</li>
+                    <li class="nav-item text-white">@Html.ActionLink("連絡人", "Contact", "Home")</li>*@
+
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container body-content">
+        <br />
+        @RenderBody()
+    </div>
+
+    <footer style="margin-top:20%;">
+        <div class="footerallbox">
+            <div class="footerleft">
+                <div class="footerbox1">
+                    <h3>加入運酷</h3>
+                    <h4>工作環境</h4>
+                    <h4>運酷理念</h4>
+                    <h4>運酷理念</h4>
+                    <h4>應徵流程</h4>
+                    <h4>職缺需求</h4>
+                </div>
+                <div class="footerbox2">
+                    <h3>相關連結</h3>
+                    <h4>Android  APP下載</h4>
+                    <img src="~/homepage_image/fakeQR.png" alt="fakeQR" class="QR">
+                    <h4>IOS   APP下載</h4>
+                    <img src="~/homepage_image/fakeQR.png" alt="fakeQR" class="QR">
+                </div>
+
+                <div class="footerbox3">
+                    <h3>常見問題</h3>
+                    <h4>線上退貨</h4>
+                    <h4>訂單查詢</h4>
+                    <h4><a href=".yunlogo">客服電話0800-500-6000</a></h4>
+                    <h4>網站導覽</h4>
+                </div>
+            </div>
+            <div class="footerright">
+                <div class="footerbox4">
+                    <img src="~/homepage_image/facebook.png" alt="facebook" class="facebook">
+                    <img src="~/homepage_image/youtube.png" alt="youtube" class="youtube">
+                    <img src="~/homepage_image/linepng.png" alt="line" class="line">
+                    <img src="~/homepage_image/instagram.png" alt="instagram" class="instagram">
+                    <h4>© 運酷電商股份有限公司|保留一切權利</h4>
+                    <a href=".yunkulogo">隱私權政策</a>
+                    <a href=".yunkulogo">網站使用條款</a>
+                    <a href=".yunkulogo">法律聲明</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

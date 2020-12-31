@@ -1,0 +1,52 @@
+﻿@model SportCoolNew2.Models.Class
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+  
+      
+    <div style="width:80vw;margin:auto;">
+        <p >
+            <a href="/Home/Login?">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left font-weight-bold" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                </svg>
+            </a>
+        </p>
+        <header class="row justify-content-lg-start">
+            <div class="col-12">
+                <div>
+                    <video style="width:100%" controls>
+                        <source src="@Url.Content(Model.audio)" type="video/mp4" />
+                    </video>
+                    <h3> @Html.DisplayFor(model => model.className)</h3>
+                </div>
+                <br />
+                <div class="nav">
+                    <div class="nav nav-pills text-white ml-1 pl-2" style="background-color:#55a0c1; border-radius: 5%; width: 5%;"> @Html.DisplayFor(model => model.ClassGrade.gradeName)</div>
+                    <div class="nav nav-pills text-white  ml-1 " style="background-color: #55a0c1; border-radius: 5%;">  @Html.DisplayFor(model => model.Coach.expertise)</div>
+                    <div class="nav nav-pills text-white  ml-1" style="background-color:#55a0c1;border-radius:5%;"> @Html.DisplayFor(model => model.ClassType.typeName)</div>
+                </div>
+            </div>
+            <br />
+            @*<div class="col-3 " style="width:70vw;height:80vh;">
+            @Html.Action("_classPartialView", "PartialView_")
+            <div class="row" style="width:70vw;height:80vh;">
+
+            </div>
+
+        </div>*@
+        <div class="mt-5">
+            @Html.Action("_classPartialView", "PartialView_")
+        </div>
+
+        </header>
+
+
+
+
+
+
+    </div>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SportCoolNew2.Models.TrendingArticles>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center mt-5" >官方貼文管理</h2>
+
+<p>
+    @Html.ActionLink("新增", "Create", new { }, new { @class = "btn btn-outline-primary" })
+<p/>
+
+<table >
+    <tr class="row">
+        @*<th>
+                @Html.DisplayNameFor(model => model.aContent)
+            </th>*@
+        <th  class="col-4">
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th class="col-4">
+            @Html.DisplayNameFor(model => model.article)
+        </th>
+
+        <th class="col-4"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="row">
+            <td class="col-4">
+                <img class="w-50" src="~/Images/@Html.DisplayFor(modelItem => item.image)">
+              
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.image)
+            </td>*@
+            <td class="col-4">
+                @Html.DisplayFor(modelItem => item.article)
+            </td>
+
+
+
+            <td class="col-4">
+                @Html.ActionLink("編輯", "Edit", new { id = item.articlesId }, new { @class="btn btn-outline-primary" }) 
+                @Html.ActionLink("刪除", "Delete", new { id = item.articlesId }, new { @class = "btn btn-outline-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

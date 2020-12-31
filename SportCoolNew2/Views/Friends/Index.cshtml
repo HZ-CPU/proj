@@ -1,0 +1,197 @@
+﻿@model IEnumerable<SportCoolNew2.Models.Friend>
+
+
+@{
+    ViewBag.Title = "好友清單";
+}
+
+
+    <div class="container" >
+        <div class="container">
+
+
+
+            @*加好友*@
+            <a href="@Url.Action("Create","Friends")" class="btn btn-light" title="加好友">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zM13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                </svg>
+            </a>
+            @*好友邀請清單*@
+            <div class="btn  btn-group btn-light  addfriend" id="addfriend" title="好友邀請">
+                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-people" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+                </svg>
+                @foreach (var item in Model)
+                {
+                    if ((item.mId == (int)Session["memberId"]) && (item.status != true))
+                    {
+                        <p class="rounded-circle bg-danger" style="height:10px;width:10px;"></p>
+                    }
+                    else
+                    {
+                        <p></p>
+                    }
+                }
+            </div>
+
+            @*好友邀請*@
+            <table id="fdbox" class="table table-hover  w-25 bg-light  example-popover" style="display:none;position:absolute;z-index:200;">
+                <thead>
+
+                </thead>
+                <tbody>
+                    @{
+                        int i = 1;
+                    }
+                    @foreach (var item in Model)
+                    {
+
+                        if ((item.mId == (int)Session["memberId"]) && (item.status != true))
+                        {
+                            i = i * 0;
+                            <tr>
+                                <th scope="row"> @Html.DisplayFor(modelItem => item.Member.name)</th>
+                                <td>
+                                    <a href="@Url.Action("Agree",new { id=item.fId})" class="btn btn-success">同意</a>
+                                    <a href="@Url.Action("Refuse",new { id=item.fId})" class="btn btn-success">忽略</a>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            i = i * 1;
+                        }
+                    }
+                    @if (i == 1)
+                    {
+                        <tr>
+                            <th></th>
+                            <td class="text-dark">暫無邀請</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+     
+
+        <div class="container">
+
+            <h2 class="mt-5">@Session["membername"]</h2>
+
+            <div class="row">
+                <table class="table mt-5 col-6">
+
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Member.name)
+                        </th>
+                        <th>
+                            
+                        </th>
+
+                        <th>
+                           
+                        </th>
+
+                    </tr>
+
+
+
+                    @foreach (var item in Model)
+                    {
+                        if ((item.mId == (int)Session["memberId"]) && (item.status == true))
+                        {
+                            <tr>
+
+                                <td>
+
+                                    @Html.DisplayFor(modelItem => item.Member.name)
+                                    @*<div>用户名稱：<input type="hidden" value="@item.fmId" id="userName" />(<label id="conId"></label>)</div>
+                            <ul id="user"></ul>*@
+
+                                </td>
+
+                                <td>
+
+
+                                    <input id="item.fId" name="item.fId" type="submit" value="解除好友" class="btn btn-outline-dark" data-toggle="modal" data-target="#Delete@(item.fId)" />
+                                    <div class="modal fade" id="Delete@(item.fId)">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3>對方的朋友清單也會將您移除,確定要解除好友關係?</h3>
+
+                                                    <button class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <a href="@Url.Action("Delete",new { id = item.fId })" class="btn btn-danger">解除好友</a>
+                                                    <input id="Button1" type="button" value="取消" class="btn btn-success" data-dismiss="modal" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                        }
+
+                    }
+
+                </table>
+                <table class="col-6">
+                   
+                   
+
+                </table>
+
+            </div>
+            <hr />
+            @*<div class="container" style="margin-left:50%;">*@
+            <div><input type="hidden" value="@Session["memberId"]" id="userName" />(<label id="conId"></label>)</div>
+
+            <div style="width:25%;">
+                <div>在線大廳用戶</div>
+                <ul id="users"></ul>
+            </div>
+            <div id="userBox">
+            </div>
+        </div>
+            @*<ul id="users"></ul>
+            <div id="userBox">
+
+            </div>*@
+        </div>
+
+
+
+
+
+
+
+
+
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript"></script>
+    <script src="~/Scripts/umd/hub.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#addfriend").click(function () {
+                    $("#fdbox").toggle();
+                });
+            });
+
+
+
+    </script>
+}

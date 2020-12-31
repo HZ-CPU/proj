@@ -1,0 +1,103 @@
+﻿@model SportCoolNew2.Models.TrendingArticles
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<h2 class="text-center mt-5">編輯文章</h2>
+
+
+@Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-2" })
+<div class="col-md-10">
+    @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+    <input name="image" type="file">
+    <div>
+        <span><img class="w-50" src="~/Images/@Model.image"></span>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<form method="post" action="@Url.Action("Edit")" enctype="multipart/form-data">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.articlesId, htmlAttributes: new { @class = "col-md-2" })
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.articlesId, new { htmlAttributes = new { @class = "col-md-2" } })
+                @Html.ValidationMessageFor(model => model.articlesId, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+                <input name="image" type="file">
+                <div>
+                    <span><img class="w-50" src="~/Images/@Model.image"></span>
+                </div>
+
+            </div>
+        </div>*@
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.article, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.article, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.article, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+    <div style="height:500px;">
+        <h6>@Html.LabelFor(model => model.aContent, htmlAttributes: new { @class = "control-label col-md-2" })</h6>
+        <div class="col-md-10"  style="height:400px;">
+            <textarea style="background:rgba(245, 241, 241,0.15);height:500px;"; 
+                      id="aContent" name="aContent" type="text" class="overflow-auto form-control  p-2  rounded w-100 h-100">@Html.ValueFor(model => model.aContent)
+                </textarea>
+            @Html.ValidationMessageFor(model => model.aContent, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="送出" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+    }
+</form>
+
+
+
+
+<div>
+    @Html.ActionLink("回上一頁", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,53 @@
+﻿@model SportCoolNew2.Models.TrendingArticles
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<h3>確定刪除?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.aContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.article)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.article)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            <img src="~/Images/@Model.image" class="img-fluid mt-3 w-25 h-25" />
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="刪除" class="btn btn-danger" /> |
+
+            @Html.ActionLink("返回", "Index")
+        </div>
+        @*<div class="alert alert-success">
+              <strong>Success!</strong> Indicates a successful or positive action.
+            </div>*@
+    }
+</div>

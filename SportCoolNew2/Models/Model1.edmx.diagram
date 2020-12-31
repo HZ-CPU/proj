@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e2bc57cec39c4485b16786b14a764612" Name="Diagram1">
+        <EntityTypeShape EntityType="SportCoolModel.Activity" Width="1.5" PointX="16.25" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Activity_Level" Width="1.5" PointX="9" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Anc" Width="1.5" PointX="15.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Blacklist" Width="1.5" PointX="15.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Category" Width="1.5" PointX="0.75" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.CategoryManager" Width="1.5" PointX="3" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Class" Width="1.5" PointX="15.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.ClassGrade" Width="1.5" PointX="13.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.ClassType" Width="1.5" PointX="13.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Coach" Width="1.5" PointX="13.5" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Comment" Width="1.5" PointX="18" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.CommentManager" Width="1.5" PointX="20.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Commodity" Width="1.5" PointX="6" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.CommodityManager" Width="1.5" PointX="8.25" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Diet" Width="1.5" PointX="11.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.DietRecord" Width="1.5" PointX="13.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Evaluation" Width="1.5" PointX="8.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Friend" Width="1.5" PointX="13.5" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Gift" Width="1.5" PointX="9" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.GiftManager" Width="1.5" PointX="23.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.HoldList" Width="1.5" PointX="18.5" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Keyword" Width="1.5" PointX="15.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Manager" Width="1.5" PointX="18" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.MComment" Width="1.5" PointX="18.5" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Member" Width="1.5" PointX="11.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.MemberSelectClass" Width="1.5" PointX="21" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.MemberType" Width="1.5" PointX="9" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Message" Width="1.5" PointX="15.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.MRead" Width="1.5" PointX="18.5" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Nutrient" Width="1.5" PointX="9" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.OrderDetails" Width="1.5" PointX="13.5" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.OrderStatus" Width="1.5" PointX="11.25" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Payment" Width="1.5" PointX="11.25" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.QA" Width="1.5" PointX="20.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.Shop" Width="1.5" PointX="13.5" PointY="44.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.TrendingArticles" Width="1.5" PointX="21" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.TrendingManager" Width="1.5" PointX="23.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportCoolModel.WayOfDiet" Width="1.5" PointX="9" PointY="32.625" IsExpanded="true" />
+        <AssociationConnector Association="SportCoolModel.FK_HoldList_Activity1" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Member_ActivityLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Blacklist_Friend" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_CategoryManager_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_CategoryManager_Manager" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Class_ClassGrade1" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Class_ClassType" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Class_Coach" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_MemberSelectClass_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Coach_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_CommentManager_Comment" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_MComment_Comment" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_CommentManager_Manager" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Commodity_Shop" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_CommodityManager_Commodity" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Evaluation_Commodity" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_CommodityManager_Manager" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Diet_Nutrient" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_DietRecord_Diet1" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_DietRecord_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Evaluation_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Friend_Member1" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Message_Friend" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_GiftManager_Gift" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_GiftManager_Manager" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_HoldList_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_TrendingManager_Manager" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_MComment_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Member_MemberType" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Member_WayOfDiet" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_MemberSelectClass_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_MRead_Member1" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_OrderDetails_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_Shop_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_MRead_TrendingArticles" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_OrderDetails_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_OrderDetails_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.FK_TrendingManager_TrendingArticles" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.CategoryCommodity" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.Exchange" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.KeywordManager" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.ManagerAnc" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.ManagerClass" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.ManagerQA" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.MemberCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.MemberCommodity" ManuallyRouted="false" />
+        <AssociationConnector Association="SportCoolModel.MemberKeyword" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

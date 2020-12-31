@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SportCoolNew2.Models.TrendingArticles>
+
+@{
+    ViewBag.Title = "TrendingArticlesmember";
+}
+
+<h3 class="text-center" style="margin-top:30px;"></h3>
+<div class="container" style="margin-top:30px;">
+
+    <div class="row justify-content-start">
+
+        @foreach (var item in Model)
+        {
+            <div class="card col-md-3 mt-3 border-0 text-center" style="width:400px;height:350px;">
+                <a href="/TrendingArticles/Details/@item.articlesId"> <img src="~/Images/@item.image" class="img-fluid rounded mx-auto d-block" style="width:250px;height:200px;" /></a>
+                <div class="card-body">
+                    <h5 class="text-dark font-weight-bold"  style="overflow: hidden; white-space:nowrap; text-overflow:ellipsis;">@Html.DisplayFor(modelItem => item.article)</h5>
+                    <h6 class="JQellipsis text-left" style="color:#5f5f5f";> @Html.DisplayFor(model => item.aContent)</h6>
+                </div>
+            </div>
+            
+
+        }
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(function () {
+            var len = 40; // 超過50個字以"..."取代
+            $(".JQellipsis").each(function (i) {
+                if ($(this).text().length > len) {
+                    $(this).attr("title", $(this).text());
+                    var text = $(this).text().substring(0, len - 1) + "...";
+                    $(this).text(text);
+                }
+            });
+        });
+    </script>
+}

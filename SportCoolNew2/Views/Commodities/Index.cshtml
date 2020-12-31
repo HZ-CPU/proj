@@ -1,0 +1,526 @@
+﻿@model IEnumerable<SportCoolNew2.Models.Commodity>
+
+@{
+    ViewBag.Title = "產品列表";
+}
+@*<link href="~/Content/Shop.css" rel="stylesheet" />*@
+
+<!-- 圖輪轉播 -->
+@{
+    int i = 1;
+    int j = 0;
+}
+<div class="carousel slide" id="carouselExampleIndicators" data-ride="carousel">
+    <ol class="carousel-indicators" id="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        @for (i = 1; i < 5; i++)
+        {
+            <li data-target="#carouselExampleIndicators" data-slide-to="@i"></li>
+
+        }
+
+    </ol>
+    <div class="carousel-inner">
+
+
+
+        @foreach (var item in Model)
+        {
+            j++;
+            if (j == 1)
+            {
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="~/ShopImage/@item.commodityImage" alt="First slide">
+                </div>
+            }
+            else
+            {
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="~/ShopImage/@item.commodityImage" alt="First slide">
+                </div>
+            }
+
+            if (j >= 5)
+            {
+                break;
+            }
+        }
+
+    </div>
+
+
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <!--<img src="homepage_image/ios-arrow-dropleft.png" alt="dropleft" class="prev";>-->
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <!--<img src="homepage_image/ios-arrow-dropright-1.png" alt="dropright" class="next";>-->
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+@*熱銷*@
+<!-- 熱門商品 -->
+<div class="hotproductbox container" id="hotproductbox">
+    <h2>熱門商品</h2>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="container carousel-inner no-padding">
+            <div class="carousel-item active">
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image/hotproduct/hotproduct1.png">
+                </div>
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image/hotproduct/hotproduct2.png">
+                </div>
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image/hotproduct/hotproduct3.png">
+                </div>
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image/hotproduct/hotproduct4.png">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct5.png">
+                </div>
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct6.png">
+                </div>
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct7.png">
+                </div>
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct8.png">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct9.png">
+                </div>
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct10.png">
+                </div>
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct11.png">
+                </div>
+                <div class=" col-xs-1 col-sm-3 col-md-3">
+                    <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct12.png">
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+
+
+@*新上架 NEW!
+    <div class="offseasonproductbox container" id="offseasonproductbox">
+        <h2>新上架 NEW!</h2>
+        <div id="demo1" class="carousel slide" data-ride="carousel">
+             Indicators
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="3" class="active"></li>
+                <li data-target="#demo" data-slide-to="4"></li>
+                <li data-target="#demo" data-slide-to="5"></li>
+            </ul>
+
+             The slideshow
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    <div class=" col-xs-1 col-sm-3 col-md-3">
+                        <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct5.png">
+                    </div>
+                    <div class=" col-xs-1 col-sm-3 col-md-3">
+                        <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct6.png">
+                    </div>
+                    <div class=" col-xs-1 col-sm-3 col-md-3">
+                        <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct7.png">
+                    </div>
+                    <div class=" col-xs-1 col-sm-3 col-md-3">
+                        <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct8.png">
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class=" col-xs-1 col-sm-3 col-md-3">
+                            <img src="~/Sportscool web/homepage_image/hotproduct/hotproduct1.png">
+                        </div>
+                        <div class=" col-xs-1 col-sm-3 col-md-3">
+                            <img src="~/Sportscool web/homepage_image/hotproduct/hotproduct2.png">
+                        </div>
+                        <div class=" col-xs-1 col-sm-3 col-md-3">
+                            <img src="~/Sportscool web/homepage_image/hotproduct/hotproduct3.png">
+                        </div>
+                        <div class=" col-xs-1 col-sm-3 col-md-3">
+                            <img src="~/Sportscool web/homepage_image/hotproduct/hotproduct4.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class=" col-xs-1 col-sm-3 col-md-3">
+                        <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct9.png">
+                    </div>
+                    <div class=" col-xs-1 col-sm-3 col-md-3">
+                        <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct10.png">
+                    </div>
+                    <div class=" col-xs-1 col-sm-3 col-md-3">
+                        <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct11.png">
+                    </div>
+                    <div class=" col-xs-1 col-sm-3 col-md-3">
+                        <img src="~/Sportscool web/homepage_image//hotproduct/hotproduct12.png">
+                    </div>
+                </div>
+            </div>
+
+             Left and right controls
+            <a class="carousel-control-prev" href="#demo1" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo1" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>*@
+
+<hr />
+
+@*商品分類*@
+<div class="container mt-5 bg-light">
+    <ul class="nav nav-pills text-white  pb-5 row" id="pills-tab" role="tablist">
+        <li class="nav-item " role="presentation">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">運動用品</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">男仕專區</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-contact2-tab" data-toggle="pill" href="#pills-contact2" role="tab" aria-controls="pills-contact2" aria-selected="false">女仕專區</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-contact3-tab" data-toggle="pill" href="#pills-contact3" role="tab" aria-controls="pills-contact3" aria-selected="false">兒童專區</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-contact4-tab" data-toggle="pill" href="#pills-contact4" role="tab" aria-controls="pills-contact4" aria-selected="false">好康專區</a>
+        </li>
+    </ul>
+
+
+    <div class="tab-content" id="pills-tabContent">
+        @*第一類*@
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <nav>
+                <div class="nav nav-tabs bg-light" id="nav-tab" role="tablist">
+                    <a class="nav-link active " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登山</a>
+                    <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">游泳</a>
+                    <a class="nav-link" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">球類</a>
+                    <a class="nav-link" id="nav-d-tab" data-toggle="tab" href="#nav-d" role="tab" aria-controls="nav-d" aria-selected="false">重訓</a>
+                    <a class="nav-link" id="nav-b-tab" data-toggle="tab" href="#nav-b" role="tab" aria-controls="nav-b" aria-selected="false">瑜珈</a>
+                </div>
+            </nav>
+            <div class="tab-content mt-5" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="row">
+
+                        @foreach (var item in Model)
+                        {
+                            if ((@item.commodityId >= 20) && (@item.commodityId <= 40))
+                            {
+                                <div class="col-lg-2">
+                                    <div class="thumbnail border mt-4">
+                                        <a href="/Commodities/Details/@item.commodityId">
+                                            <img src="~/images/@item.commodityImage" style="width:150px;height:150px;" class="fImg">
+                                        </a>
+                                        <input class="fPId" type="hidden" value="@item.commodityId" />
+                                        <div class="caption">
+                                            <h2 class="title h5" style="overflow: hidden; white-space:nowrap; text-overflow:ellipsis;">@item.commodityName</h2>
+                                            <p class="row">
+                                                單價：
+                                                <span class="price text-danger font-weight-bold">@item.commodityPrice</span>
+
+                                                <select class="form-control amount m-1" style="width:30%;">
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+
+                                            </p>
+                                            @*<input class="fPId" type="hidden" value="@item.fPId" />*@
+                                            <div>
+
+                                                <p class="btn  btn-group">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus  add_cart" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                                                        <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z" />
+                                                    </svg>
+                                                <p class="btn btn-light add_cart">加入購物車</p>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            if ((@item.commodityId >= 40) && (@item.commodityId <= 60))
+                            {
+                                <div class="col-lg-2">
+                                    <div class="thumbnail border mt-4">
+                                        <a href="/Commodities/Details/@item.commodityId">
+                                            <img src="~/images/@item.commodityImage" style="width:150px;height:150px;" class="fImg">
+                                        </a>
+                                        <input class="fPId" type="hidden" value="@item.commodityId" />
+                                        <div class="caption">
+                                            <h2 class="title h5" style="overflow: hidden; white-space:nowrap; text-overflow:ellipsis;">@item.commodityName</h2>
+                                            <p class="row">
+                                                單價：
+                                                <span class="price text-danger font-weight-bold">@item.commodityPrice</span>
+
+                                                <select class="form-control amount m-1" style="width:30%;">
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+
+                                            </p>
+                                            @*<input class="fPId" type="hidden" value="@item.fPId" />*@
+                                            <div>
+
+                                                <p class="btn  btn-group">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus  add_cart" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                                                        <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z" />
+                                                    </svg>
+                                                <p class="btn btn-light">加入購物車</p>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
+                    <p class="text-black-50">尚無商品</p>
+                </div>
+                <div class="tab-pane fade" id="nav-d" role="tabpanel" aria-labelledby="nav-d-tab">
+                    <p class="text-black-50">尚無商品</p>
+                </div>
+                <div class="tab-pane fade" id="nav-b" role="tabpanel" aria-labelledby="nav-b-tab">
+                    <p class="text-black-50">尚無商品</p>
+                </div>
+
+
+            </div>
+        </div>
+
+        @*第二類*@
+
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <nav>
+                <div class="nav nav-tabs bg-light" id="nav-tab1" role="tablist">
+                    <a class="nav-link active" id="nav-home1-tab" data-toggle="tab" href="#nav-home1" role="tab" aria-controls="nav-home1" aria-selected="true">服裝</a>
+                    <a class="nav-link" id="nav-profile1-tab" data-toggle="tab" href="#nav-profile1" role="tab" aria-controls="nav-profile1" aria-selected="false">運動鞋</a>
+                    <a class="nav-link" id="nav-contact1-tab" data-toggle="tab" href="#nav-contact1" role="tab" aria-controls="nav-contact1" aria-selected="false">配件</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tab1Content1">
+                @*分類2-1*@
+                <div class="tab-pane fade show active" id="nav-home1" role="tabpanel" aria-labelledby="nav-home1-tab1">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            if ((@item.commodityId >= 40) && (@item.commodityId <= 60))
+                            {
+                                <div class="col-lg-2">
+                                    <div class="thumbnail border mt-4">
+                                        <a href="/Commodities/Details/@item.commodityId">
+
+                                            <img src="~/images/@item.commodityImage" style="width:150px;height:150px;" class="fImg">
+                                        </a>
+                                        <input class="fPId" type="hidden" value="@item.commodityId" />
+                                        <div class="caption">
+                                            <h2 class="title h5" style="overflow: hidden; white-space:nowrap; text-overflow:ellipsis;">@item.commodityName</h2>
+                                            <p class="row">
+                                                單價：
+                                                <span class="price text-danger font-weight-bold">@item.commodityPrice</span>
+
+                                                <select class="form-control amount m-1" style="width:30%;">
+
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+
+                                            </p>
+                                            @*<input class="fPId" type="hidden" value="@item.fPId" />*@
+                                            <div>
+
+                                                <p class="btn  btn-group">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus  add_cart" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                                                        <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z" />
+                                                    </svg>
+                                                <p class="btn btn-light add_cart">加入購物車</p>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+                    </div>
+                </div>
+                @*分類2-2*@
+                <div class="tab-pane fade" id="nav-profile1" role="tabpanel" aria-labelledby="nav-profile1-tab"><p class="text-black-50">尚無商品</p></div>
+                <div class="tab-pane fade" id="nav-contact1" role="tabpanel" aria-labelledby="nav-contact1-tab"><p class="text-black-50">尚無商品</p></div>
+            </div>
+        </div>
+
+        @*第三類*@
+
+        <div class="tab-pane fade" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact2-tab">
+            <nav>
+                <div class="nav nav-tabs bg-light" id="nav-tab2" role="tablist">
+                    <a class="nav-link active" id="nav-home2-tab" data-toggle="tab" href="#nav-home2" role="tab" aria-controls="nav-home2" aria-selected="true">服裝</a>
+                    <a class="nav-link" id="nav-profile2-tab" data-toggle="tab" href="#nav-profile2" role="tab" aria-controls="nav-profile2" aria-selected="false">運動鞋</a>
+                    <a class="nav-link" id="nav-contact2-tab" data-toggle="tab" href="#nav-contact2" role="tab" aria-controls="nav-contact2" aria-selected="false">配件</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent2">
+                <div class="tab-pane fade show active" id="nav-home2" role="tabpanel" aria-labelledby="nav-home2-tab">...</div>
+                <div class="tab-pane fade" id="nav-profile2" role="tabpanel" aria-labelledby="nav-profile2-tab">...</div>
+                <div class="tab-pane fade" id="nav-contact2" role="tabpanel" aria-labelledby="nav-contact2-tab">...</div>
+            </div>
+        </div>
+        @*第四類*@
+
+        <div class="tab-pane fade " id="pills-contact3" role="tabpanel" aria-labelledby="pills-contact3-tab">
+            <nav>
+                <div class="nav nav-tabs bg-light" id="nav-tab3" role="tablist">
+                    <a class="nav-link active" id="nav-home3-tab" data-toggle="tab" href="#nav-home3" role="tab" aria-controls="nav-home3" aria-selected="true">服裝</a>
+                    <a class="nav-link" id="nav-profile3-tab" data-toggle="tab" href="#nav-profile3" role="tab" aria-controls="nav-profile3" aria-selected="false">運動鞋</a>
+                    <a class="nav-link" id="nav-contact3-tab" data-toggle="tab" href="#nav-contact3" role="tab" aria-controls="nav-contact3" aria-selected="false">用品</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent3">
+                <div class="tab-pane fade show active" id="nav-home3" role="tabpanel" aria-labelledby="nav-home3-tab">...</div>
+                <div class="tab-pane fade" id="nav-profile3" role="tabpanel" aria-labelledby="nav-profile3-tab">...</div>
+                <div class="tab-pane fade" id="nav-contact3" role="tabpanel" aria-labelledby="nav-contact3-tab">...</div>
+            </div>
+        </div>
+
+        @*第五類*@
+
+        <div class="tab-pane fade " id="pills-contact4" role="tabpanel" aria-labelledby="pills-contact4-tab">
+            <nav>
+                <div class="nav nav-tabs bg-light" id="nav-tab4" role="tablist">
+                    <a class="nav-link active" id="nav-home4-tab" data-toggle="tab" href="#nav-home4" role="tab" aria-controls="nav-home4" aria-selected="true">熱銷排行</a>
+                    <a class="nav-link" id="nav-profile4-tab" data-toggle="tab" href="#nav-profile4" role="tab" aria-controls="nav-profile4" aria-selected="false">出清商品</a>
+                    <a class="nav-link" id="nav-contact4-tab" data-toggle="tab" href="#nav-contact4" role="tab" aria-controls="nav-contact4" aria-selected="false">免運費</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent4">
+                <div class="tab-pane fade show active" id="nav-home4" role="tabpanel" aria-labelledby="nav-home4-tab">...</div>
+                <div class="tab-pane fade" id="nav-profile4" role="tabpanel" aria-labelledby="nav-profile4-tab">...</div>
+                <div class="tab-pane fade" id="nav-contact4" role="tabpanel" aria-labelledby="nav-contact4-tab">...</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script>
+       var cart = [];
+
+        if (localStorage.getItem("cart")) {
+            cart = JSON.parse(localStorage.getItem("cart"));
+        }
+
+        $('.add_cart').click(function () {
+
+            let product = $(this).closest('.thumbnail');
+            let newPId = product.find(".fPId").val();
+            console.log(newPId);
+            let amount = parseInt(product.find('.amount').val());
+            let oldPId;
+
+            if (cart.length > 0) {
+                for (let i = 0; i < cart.length; i++) {
+                    oldPId = cart[i]["fPId"];
+                    console.log(oldPId);
+                    if (newPId == oldPId) {
+                        cart[i]["amount"] = amount;
+                        alert("商品數量已更新!!");
+                        break;
+                    }
+                    else if (i == cart.length - 1) {
+                        add_car(product);
+                        break;
+
+                    }
+                }
+            }
+            else {
+                add_car(product);
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+        });
+
+
+        function add_car(product) {
+
+            let newItem = {
+                name: product.find('.title').text(),
+                price: parseInt(product.find('.price').text()),
+                amount: parseInt(product.find('.amount').val()),
+                fPId: product.find('.fPId').val(),
+                fImg: product.find('.fImg').attr('src')
+            };
+            cart.push(newItem);
+            alert('商品已加入購物車!!');
+        }
+
+    </script>
+}

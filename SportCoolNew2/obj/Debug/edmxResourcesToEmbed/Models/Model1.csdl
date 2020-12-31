@@ -1,0 +1,1200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SportCoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="activityId" />
+    </Key>
+    <Property Name="activityId" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="place" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="item" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="holder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="activitycontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HoldList" Relationship="Self.FK_HoldList_Activity1" FromRole="Activity" ToRole="HoldList" />
+  </EntityType>
+  <EntityType Name="Activity_Level">
+    <Key>
+      <PropertyRef Name="aLId" />
+    </Key>
+    <Property Name="aLId" Type="Int32" Nullable="false" />
+    <Property Name="activitydesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TDEE" Type="Double" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Member_ActivityLevel" FromRole="Activity_Level" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Anc">
+    <Key>
+      <PropertyRef Name="ancNumId" />
+    </Key>
+    <Property Name="ancNumId" Type="Int32" Nullable="false" />
+    <Property Name="ancCont" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ancPic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Manager" Relationship="Self.ManagerAnc" FromRole="Anc" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="Blacklist">
+    <Key>
+      <PropertyRef Name="bId" />
+    </Key>
+    <Property Name="bId" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fId" Type="Int32" />
+    <NavigationProperty Name="Friend" Relationship="Self.FK_Blacklist_Friend" FromRole="Blacklist" ToRole="Friend" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="categoryId" Type="Int32" Nullable="false" />
+    <Property Name="categoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CategoryManager" Relationship="Self.FK_CategoryManager_Category" FromRole="Category" ToRole="CategoryManager" />
+    <NavigationProperty Name="Commodity" Relationship="Self.CategoryCommodity" FromRole="Category" ToRole="Commodity" />
+    <NavigationProperty Name="Member" Relationship="Self.MemberCategory" FromRole="Category" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="CategoryManager">
+    <Key>
+      <PropertyRef Name="categoryId" />
+      <PropertyRef Name="managerId" />
+    </Key>
+    <Property Name="categoryId" Type="Int32" Nullable="false" />
+    <Property Name="managerId" Type="Int32" Nullable="false" />
+    <Property Name="cMtime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_CategoryManager_Category" FromRole="CategoryManager" ToRole="Category" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK_CategoryManager_Manager" FromRole="CategoryManager" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="cId" />
+    </Key>
+    <Property Name="cId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="className" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cGradeId" Type="Int32" />
+    <Property Name="cTypeId" Type="Int32" />
+    <Property Name="coachId" Type="Int32" />
+    <Property Name="audio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ClassGrade" Relationship="Self.FK_Class_ClassGrade1" FromRole="Class" ToRole="ClassGrade" />
+    <NavigationProperty Name="ClassType" Relationship="Self.FK_Class_ClassType" FromRole="Class" ToRole="ClassType" />
+    <NavigationProperty Name="Coach" Relationship="Self.FK_Class_Coach" FromRole="Class" ToRole="Coach" />
+    <NavigationProperty Name="MemberSelectClass" Relationship="Self.FK_MemberSelectClass_Class" FromRole="Class" ToRole="MemberSelectClass" />
+    <NavigationProperty Name="Manager" Relationship="Self.ManagerClass" FromRole="Class" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="ClassGrade">
+    <Key>
+      <PropertyRef Name="cGradeId" />
+    </Key>
+    <Property Name="cGradeId" Type="Int32" Nullable="false" />
+    <Property Name="gradeName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Class_ClassGrade1" FromRole="ClassGrade" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="ClassType">
+    <Key>
+      <PropertyRef Name="cTypeId" />
+    </Key>
+    <Property Name="cTypeId" Type="Int32" Nullable="false" />
+    <Property Name="typeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Class_ClassType" FromRole="ClassType" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="Coach">
+    <Key>
+      <PropertyRef Name="coachId" />
+    </Key>
+    <Property Name="coachId" Type="Int32" Nullable="false" />
+    <Property Name="expertise" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mId" Type="Int32" />
+    <Property Name="managerId" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="coachName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Class_Coach" FromRole="Coach" ToRole="Class" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Coach_Member" FromRole="Coach" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="commentId" />
+    </Key>
+    <Property Name="commentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="commentcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TrendingId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="userName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CommentManager" Relationship="Self.FK_CommentManager_Comment" FromRole="Comment" ToRole="CommentManager" />
+    <NavigationProperty Name="MComment" Relationship="Self.FK_MComment_Comment" FromRole="Comment" ToRole="MComment" />
+  </EntityType>
+  <EntityType Name="CommentManager">
+    <Key>
+      <PropertyRef Name="managerId" />
+      <PropertyRef Name="commentId" />
+    </Key>
+    <Property Name="managerId" Type="Int32" Nullable="false" />
+    <Property Name="publishTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="commentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Comment" Relationship="Self.FK_CommentManager_Comment" FromRole="CommentManager" ToRole="Comment" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK_CommentManager_Manager" FromRole="CommentManager" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="Commodity">
+    <Key>
+      <PropertyRef Name="commodityId" />
+    </Key>
+    <Property Name="commodityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="commodityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="commodityPrice" Type="Int32" />
+    <Property Name="commodityDiscount" Type="Double" />
+    <Property Name="commodityDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="commodityStock" Type="Int32" />
+    <Property Name="commodityImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="shopId" Type="Int32" />
+    <NavigationProperty Name="Shop" Relationship="Self.FK_Commodity_Shop" FromRole="Commodity" ToRole="Shop" />
+    <NavigationProperty Name="CommodityManager" Relationship="Self.FK_CommodityManager_Commodity" FromRole="Commodity" ToRole="CommodityManager" />
+    <NavigationProperty Name="Evaluation" Relationship="Self.FK_Evaluation_Commodity" FromRole="Commodity" ToRole="Evaluation" />
+    <NavigationProperty Name="Category" Relationship="Self.CategoryCommodity" FromRole="Commodity" ToRole="Category" />
+    <NavigationProperty Name="Member" Relationship="Self.MemberCommodity" FromRole="Commodity" ToRole="Member" />
+    <Property Name="soldTF" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="CommodityManager">
+    <Key>
+      <PropertyRef Name="commodityId" />
+      <PropertyRef Name="managerId" />
+    </Key>
+    <Property Name="commodityId" Type="Int32" Nullable="false" />
+    <Property Name="managerId" Type="Int32" Nullable="false" />
+    <Property Name="coMtime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Commodity" Relationship="Self.FK_CommodityManager_Commodity" FromRole="CommodityManager" ToRole="Commodity" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK_CommodityManager_Manager" FromRole="CommodityManager" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="Diet">
+    <Key>
+      <PropertyRef Name="foodId" />
+    </Key>
+    <Property Name="foodId" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="quantities" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="calories" Type="Int32" Nullable="false" />
+    <Property Name="nuId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Nutrient" Relationship="Self.FK_Diet_Nutrient" FromRole="Diet" ToRole="Nutrient" />
+    <NavigationProperty Name="DietRecord" Relationship="Self.FK_DietRecord_Diet1" FromRole="Diet" ToRole="DietRecord" />
+  </EntityType>
+  <EntityType Name="DietRecord">
+    <Key>
+      <PropertyRef Name="mId" />
+      <PropertyRef Name="foodId" />
+    </Key>
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="mId" Type="Int32" Nullable="false" />
+    <Property Name="foodId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Diet" Relationship="Self.FK_DietRecord_Diet1" FromRole="DietRecord" ToRole="Diet" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_DietRecord_Member" FromRole="DietRecord" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Evaluation">
+    <Key>
+      <PropertyRef Name="evaluationId" />
+      <PropertyRef Name="mId" />
+      <PropertyRef Name="commodityId" />
+    </Key>
+    <Property Name="evaluationId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="commentContent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="collectionTF" Type="Boolean" Nullable="false" />
+    <Property Name="rating" Type="Int32" />
+    <Property Name="mId" Type="Int32" Nullable="false" />
+    <Property Name="commodityId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Commodity" Relationship="Self.FK_Evaluation_Commodity" FromRole="Evaluation" ToRole="Commodity" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Evaluation_Member" FromRole="Evaluation" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Friend">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mId" Type="Int32" Nullable="false" />
+    <Property Name="fmId" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Blacklist" Relationship="Self.FK_Blacklist_Friend" FromRole="Friend" ToRole="Blacklist" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Friend_Member1" FromRole="Friend" ToRole="Member" />
+    <NavigationProperty Name="Message" Relationship="Self.FK_Message_Friend" FromRole="Friend" ToRole="Message" />
+  </EntityType>
+  <EntityType Name="Gift">
+    <Key>
+      <PropertyRef Name="giftId" />
+    </Key>
+    <Property Name="giftId" Type="Int32" Nullable="false" />
+    <Property Name="giftDate" Type="DateTime" Precision="3" />
+    <Property Name="giftCont" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="giftPic" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="GiftManager" Relationship="Self.FK_GiftManager_Gift" FromRole="Gift" ToRole="GiftManager" />
+    <NavigationProperty Name="Member" Relationship="Self.Exchange" FromRole="Gift" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="GiftManager">
+    <Key>
+      <PropertyRef Name="giftId" />
+      <PropertyRef Name="managerId" />
+    </Key>
+    <Property Name="giftId" Type="Int32" Nullable="false" />
+    <Property Name="managerId" Type="Int32" Nullable="false" />
+    <Property Name="gMtime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Gift" Relationship="Self.FK_GiftManager_Gift" FromRole="GiftManager" ToRole="Gift" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK_GiftManager_Manager" FromRole="GiftManager" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="HoldList">
+    <Key>
+      <PropertyRef Name="mId" />
+      <PropertyRef Name="activityId" />
+    </Key>
+    <Property Name="organizerName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="participantName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="participantNumber" Type="Int32" />
+    <Property Name="mId" Type="Int32" Nullable="false" />
+    <Property Name="activityId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Activity" Relationship="Self.FK_HoldList_Activity1" FromRole="HoldList" ToRole="Activity" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_HoldList_Member" FromRole="HoldList" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Keyword">
+    <Key>
+      <PropertyRef Name="keywordId" />
+    </Key>
+    <Property Name="keywordId" Type="Int32" Nullable="false" />
+    <Property Name="keywordCont" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Manager" Relationship="Self.KeywordManager" FromRole="Keyword" ToRole="Manager" />
+    <NavigationProperty Name="Member" Relationship="Self.MemberKeyword" FromRole="Keyword" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="managerId" />
+    </Key>
+    <Property Name="managerId" Type="Int32" Nullable="false" />
+    <Property Name="mAccount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CategoryManager" Relationship="Self.FK_CategoryManager_Manager" FromRole="Manager" ToRole="CategoryManager" />
+    <NavigationProperty Name="CommentManager" Relationship="Self.FK_CommentManager_Manager" FromRole="Manager" ToRole="CommentManager" />
+    <NavigationProperty Name="CommodityManager" Relationship="Self.FK_CommodityManager_Manager" FromRole="Manager" ToRole="CommodityManager" />
+    <NavigationProperty Name="GiftManager" Relationship="Self.FK_GiftManager_Manager" FromRole="Manager" ToRole="GiftManager" />
+    <NavigationProperty Name="TrendingManager" Relationship="Self.FK_TrendingManager_Manager" FromRole="Manager" ToRole="TrendingManager" />
+    <NavigationProperty Name="Keyword" Relationship="Self.KeywordManager" FromRole="Manager" ToRole="Keyword" />
+    <NavigationProperty Name="Anc" Relationship="Self.ManagerAnc" FromRole="Manager" ToRole="Anc" />
+    <NavigationProperty Name="Class" Relationship="Self.ManagerClass" FromRole="Manager" ToRole="Class" />
+    <NavigationProperty Name="QA" Relationship="Self.ManagerQA" FromRole="Manager" ToRole="QA" />
+  </EntityType>
+  <EntityType Name="MComment">
+    <Key>
+      <PropertyRef Name="commentId" />
+      <PropertyRef Name="mId" />
+    </Key>
+    <Property Name="commentId" Type="Int32" Nullable="false" />
+    <Property Name="mId" Type="Int32" Nullable="false" />
+    <Property Name="publishTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Comment" Relationship="Self.FK_MComment_Comment" FromRole="MComment" ToRole="Comment" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_MComment_Member" FromRole="MComment" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="mId" />
+    </Key>
+    <Property Name="mId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="identityId" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="gender" Type="Boolean" Nullable="false" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="age" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="postalCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="region" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="other" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="mTypeId" Type="Int32" Nullable="false" />
+    <Property Name="wayofdietId" Type="Int32" Nullable="false" />
+    <Property Name="startDate" Type="DateTime" Precision="3" />
+    <Property Name="emailstatus" Type="Boolean" Nullable="false" />
+    <Property Name="bvId" Type="Int32" />
+    <Property Name="aLId" Type="Int32" />
+    <Property Name="height" Type="Double" />
+    <Property Name="weight" Type="Double" />
+    <Property Name="BMI" Type="Double" />
+    <Property Name="BMR" Type="Double" />
+    <Property Name="TDEE" Type="Double" />
+    <Property Name="credits" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="photoSticker" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Activity_Level" Relationship="Self.FK_Member_ActivityLevel" FromRole="Member" ToRole="Activity_Level" />
+    <NavigationProperty Name="Coach" Relationship="Self.FK_Coach_Member" FromRole="Member" ToRole="Coach" />
+    <NavigationProperty Name="DietRecord" Relationship="Self.FK_DietRecord_Member" FromRole="Member" ToRole="DietRecord" />
+    <NavigationProperty Name="Evaluation" Relationship="Self.FK_Evaluation_Member" FromRole="Member" ToRole="Evaluation" />
+    <NavigationProperty Name="Friend" Relationship="Self.FK_Friend_Member1" FromRole="Member" ToRole="Friend" />
+    <NavigationProperty Name="HoldList" Relationship="Self.FK_HoldList_Member" FromRole="Member" ToRole="HoldList" />
+    <NavigationProperty Name="MComment" Relationship="Self.FK_MComment_Member" FromRole="Member" ToRole="MComment" />
+    <NavigationProperty Name="MemberType" Relationship="Self.FK_Member_MemberType" FromRole="Member" ToRole="MemberType" />
+    <NavigationProperty Name="WayOfDiet" Relationship="Self.FK_Member_WayOfDiet" FromRole="Member" ToRole="WayOfDiet" />
+    <NavigationProperty Name="MemberSelectClass" Relationship="Self.FK_MemberSelectClass_Member" FromRole="Member" ToRole="MemberSelectClass" />
+    <NavigationProperty Name="MRead" Relationship="Self.FK_MRead_Member1" FromRole="Member" ToRole="MRead" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Member" FromRole="Member" ToRole="OrderDetails" />
+    <NavigationProperty Name="Shop" Relationship="Self.FK_Shop_Member" FromRole="Member" ToRole="Shop" />
+    <NavigationProperty Name="Gift" Relationship="Self.Exchange" FromRole="Member" ToRole="Gift" />
+    <NavigationProperty Name="Category" Relationship="Self.MemberCategory" FromRole="Member" ToRole="Category" />
+    <NavigationProperty Name="Commodity" Relationship="Self.MemberCommodity" FromRole="Member" ToRole="Commodity" />
+    <NavigationProperty Name="Keyword" Relationship="Self.MemberKeyword" FromRole="Member" ToRole="Keyword" />
+  </EntityType>
+  <EntityType Name="MemberSelectClass">
+    <Key>
+      <PropertyRef Name="mId" />
+      <PropertyRef Name="cId" />
+    </Key>
+    <Property Name="mId" Type="Int32" Nullable="false" />
+    <Property Name="cId" Type="Int32" Nullable="false" />
+    <Property Name="mcltime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_MemberSelectClass_Class" FromRole="MemberSelectClass" ToRole="Class" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_MemberSelectClass_Member" FromRole="MemberSelectClass" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="MemberType">
+    <Key>
+      <PropertyRef Name="mTypeId" />
+    </Key>
+    <Property Name="mTypeId" Type="Int32" Nullable="false" />
+    <Property Name="mtname" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Member_MemberType" FromRole="MemberType" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="messageId" />
+    </Key>
+    <Property Name="messageId" Type="Int32" Nullable="false" />
+    <Property Name="toFId" Type="Int32" Nullable="false" />
+    <Property Name="fromFId" Type="Int32" Nullable="false" />
+    <Property Name="messageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fId" Type="Int32" />
+    <NavigationProperty Name="Friend" Relationship="Self.FK_Message_Friend" FromRole="Message" ToRole="Friend" />
+  </EntityType>
+  <EntityType Name="MRead">
+    <Key>
+      <PropertyRef Name="articleId" />
+      <PropertyRef Name="mId" />
+    </Key>
+    <Property Name="articleId" Type="Int32" Nullable="false" />
+    <Property Name="mId" Type="Int32" Nullable="false" />
+    <Property Name="readtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_MRead_Member1" FromRole="MRead" ToRole="Member" />
+    <NavigationProperty Name="TrendingArticles" Relationship="Self.FK_MRead_TrendingArticles" FromRole="MRead" ToRole="TrendingArticles" />
+  </EntityType>
+  <EntityType Name="Nutrient">
+    <Key>
+      <PropertyRef Name="nuId" />
+    </Key>
+    <Property Name="nuId" Type="Int32" Nullable="false" />
+    <Property Name="nuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Diet" Relationship="Self.FK_Diet_Nutrient" FromRole="Nutrient" ToRole="Diet" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tel" Type="Int32" />
+    <Property Name="orderDate" Type="DateTime" Precision="3" />
+    <Property Name="receiver" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="receivedAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="paymentId" Type="Int32" />
+    <Property Name="orderStatusId" Type="Int32" />
+    <Property Name="mId" Type="Int32" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="OrderGuid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PId" Type="Int32" />
+    <Property Name="Qty" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_OrderDetails_Member" FromRole="OrderDetails" ToRole="Member" />
+    <NavigationProperty Name="OrderStatus" Relationship="Self.FK_OrderDetails_OrderStatus" FromRole="OrderDetails" ToRole="OrderStatus" />
+    <NavigationProperty Name="Payment" Relationship="Self.FK_OrderDetails_Payment" FromRole="OrderDetails" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="orderStatusId" />
+    </Key>
+    <Property Name="orderStatusId" Type="Int32" Nullable="false" />
+    <Property Name="orderStatusName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_OrderStatus" FromRole="OrderStatus" ToRole="OrderDetails" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="paymentId" />
+    </Key>
+    <Property Name="paymentId" Type="Int32" Nullable="false" />
+    <Property Name="paymentName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Payment" FromRole="Payment" ToRole="OrderDetails" />
+  </EntityType>
+  <EntityType Name="QA">
+    <Key>
+      <PropertyRef Name="QAId" />
+    </Key>
+    <Property Name="QAId" Type="Int32" Nullable="false" />
+    <Property Name="QACont" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Manager" Relationship="Self.ManagerQA" FromRole="QA" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="shopId" />
+    </Key>
+    <Property Name="shopId" Type="Int32" Nullable="false" />
+    <Property Name="shopAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="shopPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mid" Type="Int32" />
+    <NavigationProperty Name="Commodity" Relationship="Self.FK_Commodity_Shop" FromRole="Shop" ToRole="Commodity" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Shop_Member" FromRole="Shop" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TrendingArticles">
+    <Key>
+      <PropertyRef Name="articlesId" />
+    </Key>
+    <Property Name="articlesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="article" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MRead" Relationship="Self.FK_MRead_TrendingArticles" FromRole="TrendingArticles" ToRole="MRead" />
+    <NavigationProperty Name="TrendingManager" Relationship="Self.FK_TrendingManager_TrendingArticles" FromRole="TrendingArticles" ToRole="TrendingManager" />
+  </EntityType>
+  <EntityType Name="TrendingManager">
+    <Key>
+      <PropertyRef Name="articlesId" />
+      <PropertyRef Name="managerId" />
+    </Key>
+    <Property Name="articlesId" Type="Int32" Nullable="false" />
+    <Property Name="managerId" Type="Int32" Nullable="false" />
+    <Property Name="publishTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK_TrendingManager_Manager" FromRole="TrendingManager" ToRole="Manager" />
+    <NavigationProperty Name="TrendingArticles" Relationship="Self.FK_TrendingManager_TrendingArticles" FromRole="TrendingManager" ToRole="TrendingArticles" />
+  </EntityType>
+  <EntityType Name="WayOfDiet">
+    <Key>
+      <PropertyRef Name="wayofdietId" />
+    </Key>
+    <Property Name="wayofdietId" Type="Int32" Nullable="false" />
+    <Property Name="wdcont" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Member_WayOfDiet" FromRole="WayOfDiet" ToRole="Member" />
+  </EntityType>
+  <Association Name="FK_HoldList_Activity1">
+    <End Role="Activity" Type="Self.Activity" Multiplicity="1" />
+    <End Role="HoldList" Type="Self.HoldList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity">
+        <PropertyRef Name="activityId" />
+      </Principal>
+      <Dependent Role="HoldList">
+        <PropertyRef Name="activityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Member_ActivityLevel">
+    <End Role="Activity_Level" Type="Self.Activity_Level" Multiplicity="0..1" />
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activity_Level">
+        <PropertyRef Name="aLId" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="aLId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blacklist_Friend">
+    <End Role="Friend" Type="Self.Friend" Multiplicity="0..1" />
+    <End Role="Blacklist" Type="Self.Blacklist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Friend">
+        <PropertyRef Name="fId" />
+      </Principal>
+      <Dependent Role="Blacklist">
+        <PropertyRef Name="fId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryManager_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="CategoryManager" Type="Self.CategoryManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryId" />
+      </Principal>
+      <Dependent Role="CategoryManager">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryManager_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+    <End Role="CategoryManager" Type="Self.CategoryManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="managerId" />
+      </Principal>
+      <Dependent Role="CategoryManager">
+        <PropertyRef Name="managerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_ClassGrade1">
+    <End Role="ClassGrade" Type="Self.ClassGrade" Multiplicity="0..1" />
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassGrade">
+        <PropertyRef Name="cGradeId" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="cGradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_ClassType">
+    <End Role="ClassType" Type="Self.ClassType" Multiplicity="0..1" />
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassType">
+        <PropertyRef Name="cTypeId" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="cTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_Coach">
+    <End Role="Coach" Type="Self.Coach" Multiplicity="0..1" />
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coach">
+        <PropertyRef Name="coachId" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="coachId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberSelectClass_Class">
+    <End Role="Class" Type="Self.Class" Multiplicity="1" />
+    <End Role="MemberSelectClass" Type="Self.MemberSelectClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="cId" />
+      </Principal>
+      <Dependent Role="MemberSelectClass">
+        <PropertyRef Name="cId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="Coach" Type="Self.Coach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="mId" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="mId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommentManager_Comment">
+    <End Role="Comment" Type="Self.Comment" Multiplicity="1" />
+    <End Role="CommentManager" Type="Self.CommentManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="commentId" />
+      </Principal>
+      <Dependent Role="CommentManager">
+        <PropertyRef Name="commentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MComment_Comment">
+    <End Role="Comment" Type="Self.Comment" Multiplicity="1" />
+    <End Role="MComment" Type="Self.MComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="commentId" />
+      </Principal>
+      <Dependent Role="MComment">
+        <PropertyRef Name="commentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommentManager_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+    <End Role="CommentManager" Type="Self.CommentManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="managerId" />
+      </Principal>
+      <Dependent Role="CommentManager">
+        <PropertyRef Name="managerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Commodity_Shop">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+    <End Role="Commodity" Type="Self.Commodity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="shopId" />
+      </Principal>
+      <Dependent Role="Commodity">
+        <PropertyRef Name="shopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommodityManager_Commodity">
+    <End Role="Commodity" Type="Self.Commodity" Multiplicity="1" />
+    <End Role="CommodityManager" Type="Self.CommodityManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Commodity">
+        <PropertyRef Name="commodityId" />
+      </Principal>
+      <Dependent Role="CommodityManager">
+        <PropertyRef Name="commodityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evaluation_Commodity">
+    <End Role="Commodity" Type="Self.Commodity" Multiplicity="1" />
+    <End Role="Evaluation" Type="Self.Evaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Commodity">
+        <PropertyRef Name="commodityId" />
+      </Principal>
+      <Dependent Role="Evaluation">
+        <PropertyRef Name="commodityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommodityManager_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+    <End Role="CommodityManager" Type="Self.CommodityManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="managerId" />
+      </Principal>
+      <Dependent Role="CommodityManager">
+        <PropertyRef Name="managerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Diet_Nutrient">
+    <End Role="Nutrient" Type="Self.Nutrient" Multiplicity="1" />
+    <End Role="Diet" Type="Self.Diet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nutrient">
+        <PropertyRef Name="nuId" />
+      </Principal>
+      <Dependent Role="Diet">
+        <PropertyRef Name="nuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DietRecord_Diet1">
+    <End Role="Diet" Type="Self.Diet" Multiplicity="1" />
+    <End Role="DietRecord" Type="Self.DietRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diet">
+        <PropertyRef Name="foodId" />
+      </Principal>
+      <Dependent Role="DietRecord">
+        <PropertyRef Name="foodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DietRecord_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="DietRecord" Type="Self.DietRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="mId" />
+      </Principal>
+      <Dependent Role="DietRecord">
+        <PropertyRef Name="mId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evaluation_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="Evaluation" Type="Self.Evaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="mId" />
+      </Principal>
+      <Dependent Role="Evaluation">
+        <PropertyRef Name="mId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Friend_Member1">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="mId" />
+      </Principal>
+      <Dependent Role="Friend">
+        <PropertyRef Name="fmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Friend">
+    <End Role="Friend" Type="Self.Friend" Multiplicity="0..1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Friend">
+        <PropertyRef Name="fId" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="fId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiftManager_Gift">
+    <End Role="Gift" Type="Self.Gift" Multiplicity="1" />
+    <End Role="GiftManager" Type="Self.GiftManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gift">
+        <PropertyRef Name="giftId" />
+      </Principal>
+      <Dependent Role="GiftManager">
+        <PropertyRef Name="giftId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiftManager_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+    <End Role="GiftManager" Type="Self.GiftManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="managerId" />
+      </Principal>
+      <Dependent Role="GiftManager">
+        <PropertyRef Name="managerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoldList_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="HoldList" Type="Self.HoldList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="mId" />
+      </Principal>
+      <Dependent Role="HoldList">
+        <PropertyRef Name="mId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrendingManager_Manager">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+    <End Role="TrendingManager" Type="Self.TrendingManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="managerId" />
+      </Principal>
+      <Dependent Role="TrendingManager">
+        <PropertyRef Name="managerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MComment_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="MComment" Type="Self.MComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="mId" />
+      </Principal>
+      <Dependent Role="MComment">
+        <PropertyRef Name="mId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Member_MemberType">
+    <End Role="MemberType" Type="Self.MemberType" Multiplicity="1" />
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberType">
+        <PropertyRef Name="mTypeId" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="mTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Member_WayOfDiet">
+    <End Role="WayOfDiet" Type="Self.WayOfDiet" Multiplicity="1" />
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WayOfDiet">
+        <PropertyRef Name="wayofdietId" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="wayofdietId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberSelectClass_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="MemberSelectClass" Type="Self.MemberSelectClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="mId" />
+      </Principal>
+      <Dependent Role="MemberSelectClass">
+        <PropertyRef Name="mId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRead_Member1">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="MRead" Type="Self.MRead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="mId" />
+      </Principal>
+      <Dependent Role="MRead">
+        <PropertyRef Name="mId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="mId" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="mId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shop_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="mId" />
+      </Principal>
+      <Dependent Role="Shop">
+        <PropertyRef Name="mid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRead_TrendingArticles">
+    <End Role="TrendingArticles" Type="Self.TrendingArticles" Multiplicity="1" />
+    <End Role="MRead" Type="Self.MRead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrendingArticles">
+        <PropertyRef Name="articlesId" />
+      </Principal>
+      <Dependent Role="MRead">
+        <PropertyRef Name="articleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_OrderStatus">
+    <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="orderStatusId" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="orderStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Payment">
+    <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="paymentId" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="paymentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrendingManager_TrendingArticles">
+    <End Role="TrendingArticles" Type="Self.TrendingArticles" Multiplicity="1" />
+    <End Role="TrendingManager" Type="Self.TrendingManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrendingArticles">
+        <PropertyRef Name="articlesId" />
+      </Principal>
+      <Dependent Role="TrendingManager">
+        <PropertyRef Name="articlesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryCommodity">
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <End Role="Commodity" Type="Self.Commodity" Multiplicity="*" />
+  </Association>
+  <Association Name="Exchange">
+    <End Role="Gift" Type="Self.Gift" Multiplicity="*" />
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+  </Association>
+  <Association Name="KeywordManager">
+    <End Role="Keyword" Type="Self.Keyword" Multiplicity="*" />
+    <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+  </Association>
+  <Association Name="ManagerAnc">
+    <End Role="Anc" Type="Self.Anc" Multiplicity="*" />
+    <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+  </Association>
+  <Association Name="ManagerClass">
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+  </Association>
+  <Association Name="ManagerQA">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+    <End Role="QA" Type="Self.QA" Multiplicity="*" />
+  </Association>
+  <Association Name="MemberCategory">
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+  </Association>
+  <Association Name="MemberCommodity">
+    <End Role="Commodity" Type="Self.Commodity" Multiplicity="*" />
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+  </Association>
+  <Association Name="MemberKeyword">
+    <End Role="Keyword" Type="Self.Keyword" Multiplicity="*" />
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="SportCoolEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Activity" EntityType="Self.Activity" />
+    <EntitySet Name="Activity_Level" EntityType="Self.Activity_Level" />
+    <EntitySet Name="Anc" EntityType="Self.Anc" />
+    <EntitySet Name="Blacklist" EntityType="Self.Blacklist" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="CategoryManager" EntityType="Self.CategoryManager" />
+    <EntitySet Name="Class" EntityType="Self.Class" />
+    <EntitySet Name="ClassGrade" EntityType="Self.ClassGrade" />
+    <EntitySet Name="ClassType" EntityType="Self.ClassType" />
+    <EntitySet Name="Coach" EntityType="Self.Coach" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" />
+    <EntitySet Name="CommentManager" EntityType="Self.CommentManager" />
+    <EntitySet Name="Commodity" EntityType="Self.Commodity" />
+    <EntitySet Name="CommodityManager" EntityType="Self.CommodityManager" />
+    <EntitySet Name="Diet" EntityType="Self.Diet" />
+    <EntitySet Name="DietRecord" EntityType="Self.DietRecord" />
+    <EntitySet Name="Evaluation" EntityType="Self.Evaluation" />
+    <EntitySet Name="Friend" EntityType="Self.Friend" />
+    <EntitySet Name="Gift" EntityType="Self.Gift" />
+    <EntitySet Name="GiftManager" EntityType="Self.GiftManager" />
+    <EntitySet Name="HoldList" EntityType="Self.HoldList" />
+    <EntitySet Name="Keyword" EntityType="Self.Keyword" />
+    <EntitySet Name="Manager" EntityType="Self.Manager" />
+    <EntitySet Name="MComment" EntityType="Self.MComment" />
+    <EntitySet Name="Member" EntityType="Self.Member" />
+    <EntitySet Name="MemberSelectClass" EntityType="Self.MemberSelectClass" />
+    <EntitySet Name="MemberType" EntityType="Self.MemberType" />
+    <EntitySet Name="Message" EntityType="Self.Message" />
+    <EntitySet Name="MRead" EntityType="Self.MRead" />
+    <EntitySet Name="Nutrient" EntityType="Self.Nutrient" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+    <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" />
+    <EntitySet Name="QA" EntityType="Self.QA" />
+    <EntitySet Name="Shop" EntityType="Self.Shop" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TrendingArticles" EntityType="Self.TrendingArticles" />
+    <EntitySet Name="TrendingManager" EntityType="Self.TrendingManager" />
+    <EntitySet Name="WayOfDiet" EntityType="Self.WayOfDiet" />
+    <AssociationSet Name="FK_HoldList_Activity1" Association="Self.FK_HoldList_Activity1">
+      <End Role="Activity" EntitySet="Activity" />
+      <End Role="HoldList" EntitySet="HoldList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Member_ActivityLevel" Association="Self.FK_Member_ActivityLevel">
+      <End Role="Activity_Level" EntitySet="Activity_Level" />
+      <End Role="Member" EntitySet="Member" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blacklist_Friend" Association="Self.FK_Blacklist_Friend">
+      <End Role="Friend" EntitySet="Friend" />
+      <End Role="Blacklist" EntitySet="Blacklist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryManager_Category" Association="Self.FK_CategoryManager_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="CategoryManager" EntitySet="CategoryManager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryManager_Manager" Association="Self.FK_CategoryManager_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="CategoryManager" EntitySet="CategoryManager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_ClassGrade1" Association="Self.FK_Class_ClassGrade1">
+      <End Role="ClassGrade" EntitySet="ClassGrade" />
+      <End Role="Class" EntitySet="Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_ClassType" Association="Self.FK_Class_ClassType">
+      <End Role="ClassType" EntitySet="ClassType" />
+      <End Role="Class" EntitySet="Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_Coach" Association="Self.FK_Class_Coach">
+      <End Role="Coach" EntitySet="Coach" />
+      <End Role="Class" EntitySet="Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberSelectClass_Class" Association="Self.FK_MemberSelectClass_Class">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="MemberSelectClass" EntitySet="MemberSelectClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_Member" Association="Self.FK_Coach_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Coach" EntitySet="Coach" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommentManager_Comment" Association="Self.FK_CommentManager_Comment">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="CommentManager" EntitySet="CommentManager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MComment_Comment" Association="Self.FK_MComment_Comment">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="MComment" EntitySet="MComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommentManager_Manager" Association="Self.FK_CommentManager_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="CommentManager" EntitySet="CommentManager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Commodity_Shop" Association="Self.FK_Commodity_Shop">
+      <End Role="Shop" EntitySet="Shop" />
+      <End Role="Commodity" EntitySet="Commodity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommodityManager_Commodity" Association="Self.FK_CommodityManager_Commodity">
+      <End Role="Commodity" EntitySet="Commodity" />
+      <End Role="CommodityManager" EntitySet="CommodityManager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evaluation_Commodity" Association="Self.FK_Evaluation_Commodity">
+      <End Role="Commodity" EntitySet="Commodity" />
+      <End Role="Evaluation" EntitySet="Evaluation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommodityManager_Manager" Association="Self.FK_CommodityManager_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="CommodityManager" EntitySet="CommodityManager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Diet_Nutrient" Association="Self.FK_Diet_Nutrient">
+      <End Role="Nutrient" EntitySet="Nutrient" />
+      <End Role="Diet" EntitySet="Diet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DietRecord_Diet1" Association="Self.FK_DietRecord_Diet1">
+      <End Role="Diet" EntitySet="Diet" />
+      <End Role="DietRecord" EntitySet="DietRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DietRecord_Member" Association="Self.FK_DietRecord_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="DietRecord" EntitySet="DietRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evaluation_Member" Association="Self.FK_Evaluation_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Evaluation" EntitySet="Evaluation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Friend_Member1" Association="Self.FK_Friend_Member1">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Friend" EntitySet="Friend" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Friend" Association="Self.FK_Message_Friend">
+      <End Role="Friend" EntitySet="Friend" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiftManager_Gift" Association="Self.FK_GiftManager_Gift">
+      <End Role="Gift" EntitySet="Gift" />
+      <End Role="GiftManager" EntitySet="GiftManager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiftManager_Manager" Association="Self.FK_GiftManager_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="GiftManager" EntitySet="GiftManager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoldList_Member" Association="Self.FK_HoldList_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="HoldList" EntitySet="HoldList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrendingManager_Manager" Association="Self.FK_TrendingManager_Manager">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="TrendingManager" EntitySet="TrendingManager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MComment_Member" Association="Self.FK_MComment_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="MComment" EntitySet="MComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Member_MemberType" Association="Self.FK_Member_MemberType">
+      <End Role="MemberType" EntitySet="MemberType" />
+      <End Role="Member" EntitySet="Member" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Member_WayOfDiet" Association="Self.FK_Member_WayOfDiet">
+      <End Role="WayOfDiet" EntitySet="WayOfDiet" />
+      <End Role="Member" EntitySet="Member" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberSelectClass_Member" Association="Self.FK_MemberSelectClass_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="MemberSelectClass" EntitySet="MemberSelectClass" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRead_Member1" Association="Self.FK_MRead_Member1">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="MRead" EntitySet="MRead" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Member" Association="Self.FK_OrderDetails_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shop_Member" Association="Self.FK_Shop_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Shop" EntitySet="Shop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRead_TrendingArticles" Association="Self.FK_MRead_TrendingArticles">
+      <End Role="TrendingArticles" EntitySet="TrendingArticles" />
+      <End Role="MRead" EntitySet="MRead" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_OrderStatus" Association="Self.FK_OrderDetails_OrderStatus">
+      <End Role="OrderStatus" EntitySet="OrderStatus" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Payment" Association="Self.FK_OrderDetails_Payment">
+      <End Role="Payment" EntitySet="Payment" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrendingManager_TrendingArticles" Association="Self.FK_TrendingManager_TrendingArticles">
+      <End Role="TrendingArticles" EntitySet="TrendingArticles" />
+      <End Role="TrendingManager" EntitySet="TrendingManager" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryCommodity" Association="Self.CategoryCommodity">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Commodity" EntitySet="Commodity" />
+    </AssociationSet>
+    <AssociationSet Name="Exchange" Association="Self.Exchange">
+      <End Role="Gift" EntitySet="Gift" />
+      <End Role="Member" EntitySet="Member" />
+    </AssociationSet>
+    <AssociationSet Name="KeywordManager" Association="Self.KeywordManager">
+      <End Role="Keyword" EntitySet="Keyword" />
+      <End Role="Manager" EntitySet="Manager" />
+    </AssociationSet>
+    <AssociationSet Name="ManagerAnc" Association="Self.ManagerAnc">
+      <End Role="Anc" EntitySet="Anc" />
+      <End Role="Manager" EntitySet="Manager" />
+    </AssociationSet>
+    <AssociationSet Name="ManagerClass" Association="Self.ManagerClass">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Manager" EntitySet="Manager" />
+    </AssociationSet>
+    <AssociationSet Name="ManagerQA" Association="Self.ManagerQA">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="QA" EntitySet="QA" />
+    </AssociationSet>
+    <AssociationSet Name="MemberCategory" Association="Self.MemberCategory">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Member" EntitySet="Member" />
+    </AssociationSet>
+    <AssociationSet Name="MemberCommodity" Association="Self.MemberCommodity">
+      <End Role="Commodity" EntitySet="Commodity" />
+      <End Role="Member" EntitySet="Member" />
+    </AssociationSet>
+    <AssociationSet Name="MemberKeyword" Association="Self.MemberKeyword">
+      <End Role="Keyword" EntitySet="Keyword" />
+      <End Role="Member" EntitySet="Member" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

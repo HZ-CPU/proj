@@ -1,0 +1,180 @@
+﻿@model SportCoolNew2.Models.Member
+
+@{
+    ViewBag.Title = "Details";
+}
+
+    <h2 class="text-center mt-5">會員詳細資料</h2>
+    <div class="container text-center" >
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.name)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayFor(model => model.name)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.identityId)</td>
+                    <td> @Html.DisplayFor(model => model.identityId)</td>
+                </tr>
+                <tr>
+                    <td> @Html.DisplayNameFor(model => model.email)</td>
+                    <td> @Html.DisplayFor(model => model.email)</td>
+                </tr>
+                <tr>
+                    <td> @Html.DisplayNameFor(model => model.birthday)</td>
+                    <td> @Html.DisplayFor(model => model.birthday)</td>
+                </tr>
+                <tr>
+                    <td>  @*@Html.DisplayNameFor(model => model.age)*@年齡</td>
+                    <td>  @Html.DisplayFor(model => model.age)</td>
+                </tr>
+                <tr>
+                    <td> @Html.DisplayNameFor(model => model.gender)</td>
+                  
+                    @{
+                        var x = Model.gender;
+
+                        if (x == true)
+                        {
+                            <td>男</td>
+                        }
+                        else if (x == false)
+                        {
+                            <td>女</td>
+                        }
+
+                    }
+                </tr>
+                <tr>
+                    <td> @Html.DisplayNameFor(model => model.phone)</td>
+                    <td> @Html.DisplayFor(model => model.phone)</td>
+                </tr>
+                <tr>
+                    <td> @*@Html.DisplayNameFor(model => model.postalCode)*@郵遞區號</td>
+                    <td> @Html.DisplayFor(model => model.postalCode)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.city)</td>
+                    <td>
+                        @Html.DisplayFor(model => model.city)
+                    </td>
+                </tr>
+                <tr>
+                    <td> @Html.DisplayNameFor(model => model.region)</td>
+                    <td>  @Html.DisplayFor(model => model.region)</td>
+                </tr>
+                @*<tr>
+                    <td>  @Html.DisplayNameFor(model => model.credits)</td>
+                    <td>  @Html.DisplayFor(model => model.credits)</td>
+                </tr>*@
+                @*<tr>
+                    <td>  @Html.DisplayNameFor(model => model.emailstatus)</td>
+                    <td>  @Html.DisplayFor(model => model.emailstatus)</td>
+                </tr>*@
+                <tr>
+                    <td>   @Html.DisplayNameFor(model => model.photoSticker)</td>
+                    <td>  <img class="w-25" src="~/Images/@Html.DisplayFor(model => model.photoSticker)"></td>
+                </tr>
+                <tr>
+                    <td>   @*@Html.DisplayNameFor(model => model.MemberType.mtname)*@會員身分</td>
+                    <td>  @Html.DisplayFor(model => model.MemberType.mtname)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+   
+        @*<dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>*@
+
+        @*<dd>
+            @Html.DisplayFor(model => model.startDate)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.bvId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bvId)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.height)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.height)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.weight)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.BMI)
+        </dt>*@
+
+        @*<dd>
+            @Html.DisplayFor(model => model.BMI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BMR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BMR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDEE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDEE)
+        </dd>*@
+
+       
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Checkout.transacId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Checkout.transacId)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.WayOfDiet.wdcont)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WayOfDiet.wdcont)
+        </dd>*@
+
+<p>
+    @*@Html.ActionLink("編輯會員資料", "Edit", new { id = Model.mId }) |*@
+    @Html.ActionLink("回到上一頁", "Index")
+</p>

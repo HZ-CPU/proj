@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SportCoolModelStoreContainer" CdmEntityContainer="SportCoolEntities">
+    <EntitySetMapping Name="Activity">
+      <EntityTypeMapping TypeName="SportCoolModel.Activity">
+        <MappingFragment StoreEntitySet="Activity">
+          <ScalarProperty Name="activityId" ColumnName="activityId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="place" ColumnName="place" />
+          <ScalarProperty Name="dateTime" ColumnName="dateTime" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="holder" ColumnName="holder" />
+          <ScalarProperty Name="activitycontent" ColumnName="activitycontent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Activity_Level">
+      <EntityTypeMapping TypeName="SportCoolModel.Activity_Level">
+        <MappingFragment StoreEntitySet="Activity_Level">
+          <ScalarProperty Name="aLId" ColumnName="aLId" />
+          <ScalarProperty Name="activitydesc" ColumnName="activitydesc" />
+          <ScalarProperty Name="TDEE" ColumnName="TDEE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Anc">
+      <EntityTypeMapping TypeName="SportCoolModel.Anc">
+        <MappingFragment StoreEntitySet="Anc">
+          <ScalarProperty Name="ancNumId" ColumnName="ancNumId" />
+          <ScalarProperty Name="ancCont" ColumnName="ancCont" />
+          <ScalarProperty Name="ancPic" ColumnName="ancPic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blacklist">
+      <EntityTypeMapping TypeName="SportCoolModel.Blacklist">
+        <MappingFragment StoreEntitySet="Blacklist">
+          <ScalarProperty Name="bId" ColumnName="bId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="fId" ColumnName="fId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="SportCoolModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryManager">
+      <EntityTypeMapping TypeName="SportCoolModel.CategoryManager">
+        <MappingFragment StoreEntitySet="CategoryManager">
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="managerId" ColumnName="managerId" />
+          <ScalarProperty Name="cMtime" ColumnName="cMtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Class">
+      <EntityTypeMapping TypeName="SportCoolModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="cId" ColumnName="cId" />
+          <ScalarProperty Name="className" ColumnName="className" />
+          <ScalarProperty Name="cGradeId" ColumnName="cGradeId" />
+          <ScalarProperty Name="cTypeId" ColumnName="cTypeId" />
+          <ScalarProperty Name="coachId" ColumnName="coachId" />
+          <ScalarProperty Name="audio" ColumnName="audio" />
+          <ScalarProperty Name="time" ColumnName="time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassGrade">
+      <EntityTypeMapping TypeName="SportCoolModel.ClassGrade">
+        <MappingFragment StoreEntitySet="ClassGrade">
+          <ScalarProperty Name="cGradeId" ColumnName="cGradeId" />
+          <ScalarProperty Name="gradeName" ColumnName="gradeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassType">
+      <EntityTypeMapping TypeName="SportCoolModel.ClassType">
+        <MappingFragment StoreEntitySet="ClassType">
+          <ScalarProperty Name="cTypeId" ColumnName="cTypeId" />
+          <ScalarProperty Name="typeName" ColumnName="typeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coach">
+      <EntityTypeMapping TypeName="SportCoolModel.Coach">
+        <MappingFragment StoreEntitySet="Coach">
+          <ScalarProperty Name="coachId" ColumnName="coachId" />
+          <ScalarProperty Name="expertise" ColumnName="expertise" />
+          <ScalarProperty Name="mId" ColumnName="mId" />
+          <ScalarProperty Name="managerId" ColumnName="managerId" />
+          <ScalarProperty Name="coachName" ColumnName="coachName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comment">
+      <EntityTypeMapping TypeName="SportCoolModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="commentId" ColumnName="commentId" />
+          <ScalarProperty Name="commentcontent" ColumnName="commentcontent" />
+          <ScalarProperty Name="TrendingId" ColumnName="TrendingId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommentManager">
+      <EntityTypeMapping TypeName="SportCoolModel.CommentManager">
+        <MappingFragment StoreEntitySet="CommentManager">
+          <ScalarProperty Name="managerId" ColumnName="managerId" />
+          <ScalarProperty Name="publishTime" ColumnName="publishTime" />
+          <ScalarProperty Name="commentId" ColumnName="commentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Commodity">
+      <EntityTypeMapping TypeName="SportCoolModel.Commodity">
+        <MappingFragment StoreEntitySet="Commodity">
+          <ScalarProperty Name="soldTF" ColumnName="soldTF" />
+          <ScalarProperty Name="commodityId" ColumnName="commodityId" />
+          <ScalarProperty Name="commodityName" ColumnName="commodityName" />
+          <ScalarProperty Name="commodityPrice" ColumnName="commodityPrice" />
+          <ScalarProperty Name="commodityDiscount" ColumnName="commodityDiscount" />
+          <ScalarProperty Name="commodityDescription" ColumnName="commodityDescription" />
+          <ScalarProperty Name="commodityStock" ColumnName="commodityStock" />
+          <ScalarProperty Name="commodityImage" ColumnName="commodityImage" />
+          <ScalarProperty Name="shopId" ColumnName="shopId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommodityManager">
+      <EntityTypeMapping TypeName="SportCoolModel.CommodityManager">
+        <MappingFragment StoreEntitySet="CommodityManager">
+          <ScalarProperty Name="commodityId" ColumnName="commodityId" />
+          <ScalarProperty Name="managerId" ColumnName="managerId" />
+          <ScalarProperty Name="coMtime" ColumnName="coMtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diet">
+      <EntityTypeMapping TypeName="SportCoolModel.Diet">
+        <MappingFragment StoreEntitySet="Diet">
+          <ScalarProperty Name="foodId" ColumnName="foodId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="quantities" ColumnName="quantities" />
+          <ScalarProperty Name="calories" ColumnName="calories" />
+          <ScalarProperty Name="nuId" ColumnName="nuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DietRecord">
+      <EntityTypeMapping TypeName="SportCoolModel.DietRecord">
+        <MappingFragment StoreEntitySet="DietRecord">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="mId" ColumnName="mId" />
+          <ScalarProperty Name="foodId" ColumnName="foodId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evaluation">
+      <EntityTypeMapping TypeName="SportCoolModel.Evaluation">
+        <MappingFragment StoreEntitySet="Evaluation">
+          <ScalarProperty Name="evaluationId" ColumnName="evaluationId" />
+          <ScalarProperty Name="commentContent" ColumnName="commentContent" />
+          <ScalarProperty Name="collectionTF" ColumnName="collectionTF" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="mId" ColumnName="mId" />
+          <ScalarProperty Name="commodityId" ColumnName="commodityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Friend">
+      <EntityTypeMapping TypeName="SportCoolModel.Friend">
+        <MappingFragment StoreEntitySet="Friend">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="mId" ColumnName="mId" />
+          <ScalarProperty Name="fmId" ColumnName="fmId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gift">
+      <EntityTypeMapping TypeName="SportCoolModel.Gift">
+        <MappingFragment StoreEntitySet="Gift">
+          <ScalarProperty Name="giftId" ColumnName="giftId" />
+          <ScalarProperty Name="giftDate" ColumnName="giftDate" />
+          <ScalarProperty Name="giftCont" ColumnName="giftCont" />
+          <ScalarProperty Name="giftPic" ColumnName="giftPic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GiftManager">
+      <EntityTypeMapping TypeName="SportCoolModel.GiftManager">
+        <MappingFragment StoreEntitySet="GiftManager">
+          <ScalarProperty Name="giftId" ColumnName="giftId" />
+          <ScalarProperty Name="managerId" ColumnName="managerId" />
+          <ScalarProperty Name="gMtime" ColumnName="gMtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoldList">
+      <EntityTypeMapping TypeName="SportCoolModel.HoldList">
+        <MappingFragment StoreEntitySet="HoldList">
+          <ScalarProperty Name="organizerName" ColumnName="organizerName" />
+          <ScalarProperty Name="participantName" ColumnName="participantName" />
+          <ScalarProperty Name="participantNumber" ColumnName="participantNumber" />
+          <ScalarProperty Name="mId" ColumnName="mId" />
+          <ScalarProperty Name="activityId" ColumnName="activityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Keyword">
+      <EntityTypeMapping TypeName="SportCoolModel.Keyword">
+        <MappingFragment StoreEntitySet="Keyword">
+          <ScalarProperty Name="keywordId" ColumnName="keywordId" />
+          <ScalarProperty Name="keywordCont" ColumnName="keywordCont" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manager">
+      <EntityTypeMapping TypeName="SportCoolModel.Manager">
+        <MappingFragment StoreEntitySet="Manager">
+          <ScalarProperty Name="managerId" ColumnName="managerId" />
+          <ScalarProperty Name="mAccount" ColumnName="mAccount" />
+          <ScalarProperty Name="mPassword" ColumnName="mPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MComment">
+      <EntityTypeMapping TypeName="SportCoolModel.MComment">
+        <MappingFragment StoreEntitySet="MComment">
+          <ScalarProperty Name="commentId" ColumnName="commentId" />
+          <ScalarProperty Name="mId" ColumnName="mId" />
+          <ScalarProperty Name="publishTime" ColumnName="publishTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Member">
+      <EntityTypeMapping TypeName="SportCoolModel.Member">
+        <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="mId" ColumnName="mId" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="identityId" ColumnName="identityId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="other" ColumnName="other" />
+          <ScalarProperty Name="mTypeId" ColumnName="mTypeId" />
+          <ScalarProperty Name="wayofdietId" ColumnName="wayofdietId" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="emailstatus" ColumnName="emailstatus" />
+          <ScalarProperty Name="bvId" ColumnName="bvId" />
+          <ScalarProperty Name="aLId" ColumnName="aLId" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="BMI" ColumnName="BMI" />
+          <ScalarProperty Name="BMR" ColumnName="BMR" />
+          <ScalarProperty Name="TDEE" ColumnName="TDEE" />
+          <ScalarProperty Name="credits" ColumnName="credits" />
+          <ScalarProperty Name="photoSticker" ColumnName="photoSticker" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberSelectClass">
+      <EntityTypeMapping TypeName="SportCoolModel.MemberSelectClass">
+        <MappingFragment StoreEntitySet="MemberSelectClass">
+          <ScalarProperty Name="mId" ColumnName="mId" />
+          <ScalarProperty Name="cId" ColumnName="cId" />
+          <ScalarProperty Name="mcltime" ColumnName="mcltime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberType">
+      <EntityTypeMapping TypeName="SportCoolModel.MemberType">
+        <MappingFragment StoreEntitySet="MemberType">
+          <ScalarProperty Name="mTypeId" ColumnName="mTypeId" />
+          <ScalarProperty Name="mtname" ColumnName="mtname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Message">
+      <EntityTypeMapping TypeName="SportCoolModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="messageId" ColumnName="messageId" />
+          <ScalarProperty Name="toFId" ColumnName="toFId" />
+          <ScalarProperty Name="fromFId" ColumnName="fromFId" />
+          <ScalarProperty Name="messageContent" ColumnName="messageContent" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="fId" ColumnName="fId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MRead">
+      <EntityTypeMapping TypeName="SportCoolModel.MRead">
+        <MappingFragment StoreEntitySet="MRead">
+          <ScalarProperty Name="articleId" ColumnName="articleId" />
+          <ScalarProperty Name="mId" ColumnName="mId" />
+          <ScalarProperty Name="readtime" ColumnName="readtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nutrient">
+      <EntityTypeMapping TypeName="SportCoolModel.Nutrient">
+        <MappingFragment StoreEntitySet="Nutrient">
+          <ScalarProperty Name="nuId" ColumnName="nuId" />
+          <ScalarProperty Name="nuName" ColumnName="nuName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="SportCoolModel.OrderDetails">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+          <ScalarProperty Name="receiver" ColumnName="receiver" />
+          <ScalarProperty Name="receivedAddress" ColumnName="receivedAddress" />
+          <ScalarProperty Name="paymentId" ColumnName="paymentId" />
+          <ScalarProperty Name="orderStatusId" ColumnName="orderStatusId" />
+          <ScalarProperty Name="mId" ColumnName="mId" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="OrderGuid" ColumnName="OrderGuid" />
+          <ScalarProperty Name="PId" ColumnName="PId" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderStatus">
+      <EntityTypeMapping TypeName="SportCoolModel.OrderStatus">
+        <MappingFragment StoreEntitySet="OrderStatus">
+          <ScalarProperty Name="orderStatusId" ColumnName="orderStatusId" />
+          <ScalarProperty Name="orderStatusName" ColumnName="orderStatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payment">
+      <EntityTypeMapping TypeName="SportCoolModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="paymentId" ColumnName="paymentId" />
+          <ScalarProperty Name="paymentName" ColumnName="paymentName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QA">
+      <EntityTypeMapping TypeName="SportCoolModel.QA">
+        <MappingFragment StoreEntitySet="QA">
+          <ScalarProperty Name="QAId" ColumnName="QAId" />
+          <ScalarProperty Name="QACont" ColumnName="QACont" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shop">
+      <EntityTypeMapping TypeName="SportCoolModel.Shop">
+        <MappingFragment StoreEntitySet="Shop">
+          <ScalarProperty Name="shopId" ColumnName="shopId" />
+          <ScalarProperty Name="shopAccount" ColumnName="shopAccount" />
+          <ScalarProperty Name="shopPassword" ColumnName="shopPassword" />
+          <ScalarProperty Name="mid" ColumnName="mid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SportCoolModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrendingArticles">
+      <EntityTypeMapping TypeName="SportCoolModel.TrendingArticles">
+        <MappingFragment StoreEntitySet="TrendingArticles">
+          <ScalarProperty Name="articlesId" ColumnName="articlesId" />
+          <ScalarProperty Name="aContent" ColumnName="aContent" />
+          <ScalarProperty Name="article" ColumnName="article" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="time" ColumnName="time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrendingManager">
+      <EntityTypeMapping TypeName="SportCoolModel.TrendingManager">
+        <MappingFragment StoreEntitySet="TrendingManager">
+          <ScalarProperty Name="articlesId" ColumnName="articlesId" />
+          <ScalarProperty Name="managerId" ColumnName="managerId" />
+          <ScalarProperty Name="publishTime" ColumnName="publishTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WayOfDiet">
+      <EntityTypeMapping TypeName="SportCoolModel.WayOfDiet">
+        <MappingFragment StoreEntitySet="WayOfDiet">
+          <ScalarProperty Name="wayofdietId" ColumnName="wayofdietId" />
+          <ScalarProperty Name="wdcont" ColumnName="wdcont" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CategoryCommodity" TypeName="SportCoolModel.CategoryCommodity" StoreEntitySet="CategoryCommodity">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+      </EndProperty>
+      <EndProperty Name="Commodity">
+        <ScalarProperty Name="commodityId" ColumnName="commodityId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Exchange" TypeName="SportCoolModel.Exchange" StoreEntitySet="Exchange">
+      <EndProperty Name="Gift">
+        <ScalarProperty Name="giftId" ColumnName="giftId" />
+      </EndProperty>
+      <EndProperty Name="Member">
+        <ScalarProperty Name="mId" ColumnName="mId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KeywordManager" TypeName="SportCoolModel.KeywordManager" StoreEntitySet="KeywordManager">
+      <EndProperty Name="Keyword">
+        <ScalarProperty Name="keywordId" ColumnName="keywordId" />
+      </EndProperty>
+      <EndProperty Name="Manager">
+        <ScalarProperty Name="managerId" ColumnName="managerId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ManagerAnc" TypeName="SportCoolModel.ManagerAnc" StoreEntitySet="ManagerAnc">
+      <EndProperty Name="Anc">
+        <ScalarProperty Name="ancNumId" ColumnName="ancNumId" />
+      </EndProperty>
+      <EndProperty Name="Manager">
+        <ScalarProperty Name="managerId" ColumnName="managerId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ManagerClass" TypeName="SportCoolModel.ManagerClass" StoreEntitySet="ManagerClass">
+      <EndProperty Name="Class">
+        <ScalarProperty Name="cId" ColumnName="cId" />
+      </EndProperty>
+      <EndProperty Name="Manager">
+        <ScalarProperty Name="managerId" ColumnName="managerId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ManagerQA" TypeName="SportCoolModel.ManagerQA" StoreEntitySet="ManagerQA">
+      <EndProperty Name="Manager">
+        <ScalarProperty Name="managerId" ColumnName="managerId" />
+      </EndProperty>
+      <EndProperty Name="QA">
+        <ScalarProperty Name="QAId" ColumnName="QAId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MemberCategory" TypeName="SportCoolModel.MemberCategory" StoreEntitySet="MemberCategory">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+      </EndProperty>
+      <EndProperty Name="Member">
+        <ScalarProperty Name="mId" ColumnName="mId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MemberCommodity" TypeName="SportCoolModel.MemberCommodity" StoreEntitySet="MemberCommodity">
+      <EndProperty Name="Commodity">
+        <ScalarProperty Name="commodityId" ColumnName="commodityId" />
+      </EndProperty>
+      <EndProperty Name="Member">
+        <ScalarProperty Name="mId" ColumnName="mId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MemberKeyword" TypeName="SportCoolModel.MemberKeyword" StoreEntitySet="MemberKeyword">
+      <EndProperty Name="Keyword">
+        <ScalarProperty Name="keywordId" ColumnName="keywordId" />
+      </EndProperty>
+      <EndProperty Name="Member">
+        <ScalarProperty Name="mId" ColumnName="mId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

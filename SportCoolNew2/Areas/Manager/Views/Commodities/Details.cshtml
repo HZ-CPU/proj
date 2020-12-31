@@ -1,0 +1,74 @@
+﻿@model SportCoolNew2.Models.Commodity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>內容</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.commodityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commodityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commodityPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commodityPrice)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.commodityDiscount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.commodityDiscount)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commodityImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commodityImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commodityDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commodityDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commodityStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commodityStock)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Shop.shopAccount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Shop.shopAccount)
+            </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("編輯", "Edit", new { id = Model.commodityId }) |
+    @Html.ActionLink("返回", "Index")
+</p>

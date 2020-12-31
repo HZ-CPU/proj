@@ -1,0 +1,58 @@
+﻿@model SportCoolNew2.Models.HoldList
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HoldList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.organizerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.organizerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.participantName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.participantName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.participantNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.participantNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activity.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activity.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.identityId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.identityId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

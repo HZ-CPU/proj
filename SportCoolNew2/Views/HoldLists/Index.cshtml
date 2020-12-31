@@ -1,0 +1,91 @@
+﻿@model IEnumerable<SportCoolNew2.Models.HoldList>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h2>@Session["membername"] 的活動清單</h2>
+
+
+    <table class="table mt-5">
+
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Activity.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activity.place)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activity.dateTime)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.participantNumber)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            DateTime time1 = Convert.ToDateTime(item.Activity.dateTime.ToString("yyyy-MM-dd"));
+            DateTime time2 = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+
+            if ((item.mId == (int)Session["memberId"]) && (DateTime.Compare(time1, time2) > 0))
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activity.name)
+                    </td>
+                    <td>
+                        <a class="btn" href="https://www.google.com/maps/place/'+'@item.Activity.place'+'">
+                            @Html.DisplayFor(modelItem => item.Activity.place)
+                        </a>
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activity.dateTime)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.participantNumber)
+                        </td>*@
+
+                    <td id="det">
+
+
+                        @Html.ActionLink("取消參加", "Delete", new { id = item.mId, aid = item.activityId }, new { @class = "btn btn-outline-danger det" })
+
+
+                    </td>
+
+                </tr>
+
+            }
+        }
+
+    </table>
+    <div>
+        @Html.ActionLink("返回活動主頁", "Index", "Activities")
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+@section Scripts {
+    <script>
+
+
+        $('.det').click(function () {
+            alert("確定要刪除?");
+        });
+
+
+
+
+    </script>
+}

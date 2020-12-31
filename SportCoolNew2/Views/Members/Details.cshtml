@@ -1,0 +1,126 @@
+﻿@model SportCoolNew2.Models.Member
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+    <div class="container">
+        <h4>個人資料</h4>
+        <br />
+        <br />
+        <div >
+            @if (Model.photoSticker == null)
+            {
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle text-primary" viewBox="0 0 16 16">
+                    <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+                    <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                </svg>
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.photoSticker)
+
+            }
+
+        </div>
+       
+       
+        <div class="mt-5">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">  @Html.DisplayNameFor(model => model.name)</th>
+                        <td>@Html.DisplayFor(model => model.name)</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">@Html.DisplayNameFor(model => model.identityId)</th>
+                        <td> @Html.DisplayFor(model => model.identityId)</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row"> @Html.DisplayNameFor(model => model.email)</th>
+                        <td>@Html.DisplayFor(model => model.email)</td>
+
+                    </tr>
+
+                    <tr>
+                        <th scope="row">  @Html.DisplayNameFor(model => model.birthday)</th>
+                        <td>@Html.DisplayFor(model => model.birthday)</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row"> 年齡</th>
+                        <td>@Html.DisplayFor(model => model.age)</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row"> @Html.DisplayNameFor(model => model.gender)</th>
+
+                        @{
+                            var x = Model.gender;
+
+                            if (x == true)
+                            {
+                                <td>男</td>
+                            }
+                            else if (x == false)
+                            {
+                                <td>女</td>
+                            }
+
+                        }
+
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">@Html.DisplayNameFor(model => model.phone)</th>
+                        <td> @Html.DisplayFor(model => model.phone)</td>
+
+                    </tr>
+
+                    <tr>
+                        <th scope="row"> 郵遞區號</th>
+                        <td> @Html.DisplayFor(model => model.postalCode)</td>
+
+                    </tr>
+
+                    <tr>
+                        <th scope="row"> @Html.DisplayNameFor(model => model.city)</th>
+                        <td>@Html.DisplayFor(model => model.city)</td>
+
+                    </tr>
+
+                    <tr>
+                        <th scope="row">  @Html.DisplayNameFor(model => model.region)</th>
+                        <td>@Html.DisplayFor(model => model.region)</td>
+
+                    </tr>
+
+
+                    <tr>
+                        <th scope="row"> @Html.DisplayNameFor(model => model.other)</th>
+                        <td>@Html.DisplayFor(model => model.other)</td>
+
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+
+        </div><p>
+    @Html.ActionLink("修改資料", "Edit", new { id = Model.mId }) |
+    @Html.ActionLink("返回主頁", "Login", "Home")
+</p>
+    </div>
+
